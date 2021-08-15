@@ -15,6 +15,7 @@ from .config import Config
 
 app = Flask(__name__)
 app.config.from_object(Config)
+db.init_app(app)
 # Setup login manager
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
