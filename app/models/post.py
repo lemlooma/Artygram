@@ -33,7 +33,7 @@ class Post(db.Model):
             "timestamp": self.timestamp
         }
 
-    def to_dict_2(self):
+    def to_dict_associations(self):
       return {
         "comments": self.comments,
         "postlikes": self.postlikes,
