@@ -1,0 +1,112 @@
+
+.splah__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+.header__container {
+    display: flex;
+}
+
+.splash-title {
+    font-size: 2rem;
+    margin: 0;
+    margin-top: 5px;
+    margin-left: 20px;
+}
+
+.grid__container {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.grid__container-row {
+    display: flex;
+    justify-content: center;
+    margin: 10px;
+}
+
+.grid-pic {
+    margin: 10px;
+    height: 115px;
+    width: 115px;
+    border-radius: 3px;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
+        0px 3px 1px -2px rgba(0, 0, 0, 0.12), 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+.main__container {
+    display: flex;
+}
+
+.content-title {
+    width: 300px;
+    font-size: 2rem;
+}
+
+.content__container {
+    margin-left: 30px;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.log-in-button {
+    margin-top: 20px;
+    background-color: #b2dffc;
+
+    border: 0px;
+    height: 33.33px;
+   
+    color: #f5f7f9;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    transition-timing-function: ease-in-out;
+    width: 100%;
+    text-decoration: none;
+}
+
+.log-in-button:hover {
+    background-color: #0095f6;
+    cursor: pointer;
+}
+
+.sign-up-button {
+    margin-top: 20px;
+    border: 0px;
+    background-color: #ad6bf8;
+
+    height: 33.33px;
+    /* letter-spacing: 0.1rem; */
+    color: #f5f7f9;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    transition-timing-function: ease-in-out;
+    width: 100%;
+    text-decoration: none;
+}
+
+.sign-up-button:hover {
+    background-color: #b2dffc;
+    background-color: #8929f7;
+
+    cursor: pointer;
+}
+
+.log-in-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
