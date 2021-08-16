@@ -54,6 +54,16 @@ def logout():
     return {'message': 'User logged out'}
 
 
+@auth_routes.route('/demo', methods=['GET','POST'])
+def demo_login():
+    '''
+    Logs in demo user
+
+    '''
+    demo_user = User.query.filter(User.email == 'demo@aa.io').first()
+    login_user(demo_user)
+    return demo_user.to_dict() ## {'id': 2, 'username': 'Demo', 'email': 'demo@aa.io', 'bio': 'I started painting as a hobby when I was little. I didn’t know I had any talent. I believe talent is just a pursued interest. Anybody can do what I do.', 'profile_pic': 'https://imgur.com/ckiJh7g'}
+
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """
