@@ -8,7 +8,7 @@ def seed_users():
     user2 = User(
         username='lemalooma', email='lema@aa.io', password='password', profile_pic='https://imgur.com/husYQrq', bio="Art is a line around your thoughts. ―  Gustav Klimt")
     user3 = User(
-         username='diana', email='diana@aa.io', password='password', profile_pic='https://imgur.com/UKZ4ZZb', bio="")
+         username='diana', email='diana@aa.io', password='password', profile_pic='https://imgur.com/UKZ4ZZb', bio="Midnight snacker 🌝")
     user4 = User(
          username='kyle', email='kyle@aa.io', password='password', profile_pic='https://imgur.com/I2Wy7YV', bio="It's so fine and yet so terrible to stand in front of a blank canvas.")
     user5 = User(
@@ -20,7 +20,7 @@ def seed_users():
     user8 = User(
         username='dolly', email='dolly@aa.io', password='password', profile_pic='https://imgur.com/cOGFVdK', bio="While drawing I discover what I really want to say. ")
     user9 = User(
-        username='harry', email='harry@aa.io', password='password', profile_pic='', bio="Art is never finished, only abandoned.")
+        username='harry', email='harry@aa.io', password='password', profile_pic='https://imgur.com/l6kJGFd', bio="Art is never finished, only abandoned.")
     user10 = User(
         username='mervstheword', email='merv@aa.io', password='password', profile_pic='https://imgur.com/w11rdD3', bio="Life is sometimes hard. Things go wrong, in life and in love and in business and in friendship and in health and in all other ways that life can go wrong. And when things get tough, this is what you should do. Make good art.")
     user11 = User(
