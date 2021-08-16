@@ -103,10 +103,40 @@
 
     cursor: pointer;
 }
+.demo-button {
+    margin-top: 20px;
+    background-color: #b2dffc;
 
-.log-in-text {
+    border: 0px;
+    height: 33.33px;
+   
+    color: #f5f7f9;
+    border-radius: 3px;
+    font-size: 0.7rem;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    transition-timing-function: ease-in-out;
+    width: 100%;
+    text-decoration: none;
+}
+.demo-button:hover {
+    background-color: #b2dffc;
+    background-color: #8929f7;
+
+    cursor: pointer;
+}
+
+.text {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
 }
+
+#text{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
