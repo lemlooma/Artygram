@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 
 followers = db.Table(
     "followers",
@@ -25,10 +26,13 @@ class User(db.Model, UserMixin):
         'User',
         secondary=followers, 
         primaryjoin=(followers.c.followerId == id), 
-        secondaryjoin=(followers.c.follwingId == id), 
+        secondaryjoin=(followers.c.followingId == id), 
         backref = db.backref('followers', lazy='dynamic'), 
         lazy='dynamic'
     )
+
+
+
     @property
     def password(self):
         return self.hashed_password
