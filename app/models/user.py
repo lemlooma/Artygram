@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 
 followers = db.Table(
     "followers",
@@ -13,13 +14,24 @@ followers = db.Table(
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
-
+    
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     bio = db.Column(db.String(255))
     profile_pic = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
+
+    follows = db.relationship(
+        'User',
+        secondary=followers, 
+        primaryjoin=(followers.c.followerId == id), 
+        secondaryjoin=(followers.c.followingId == id), 
+        backref = db.backref('followers', lazy='dynamic'), 
+        lazy='dynamic'
+    )
+
+
 
     @property
     def password(self):
