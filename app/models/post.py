@@ -1,13 +1,6 @@
 from .db import db
 from datetime import datetime
-
-likes = db.Table(
-   "likes",
-   db.Model.metadata,
-   db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
-   db.Column("post_id", db.Integer, db.ForeignKey("posts.id"))
-)
-
+from .like import likes
 
 class Post(db.Model):
     __tablename__ = 'posts'
@@ -15,14 +8,14 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     caption = db.Column(db.String(100), nullable=False)
     pic_url = db.Column(db.String(255), nullable=False)
-    user_id = db.Column(db.Interger, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     timestamp = db.Column(db.DateTime, default=datetime.now)
 
     users = db.relationship('User', back_populates="posts")
 
     comments = db.relationship("Comment",back_populates="posts")
 
-    postlikes = db.relationship("User", secondary=likes, back_populates="userLikes")
+    postlikes = db.relationship("User", secondary=likes, back_populates="posts")
 
     def to_dict(self):
         return {

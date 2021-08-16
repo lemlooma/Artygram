@@ -2,6 +2,7 @@ from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
 from datetime import datetime
+from .like import likes
 
 followers = db.Table(
     "followers",
@@ -11,12 +12,6 @@ followers = db.Table(
     db.Column("timestamp", db.DateTime, default=datetime.now)
 )
 
-likes = db.Table(
-   "likes",
-   db.Model.metadata,
-   db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
-   db.Column("post_id", db.Integer, db.ForeignKey("posts.id"))
-)
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -37,9 +32,10 @@ class User(db.Model, UserMixin):
         lazy='dynamic'
     )
     
+
     posts = db.relationship('Post', back_populates="users")
     comments = db.relationship('Comment', back_populates="users")
-    userLikes = db.relationship("Post", secondary=likes, back_populates="postlikes")
+    userLikes = db.relationship("Post", secondary=likes, back_populates="users")
 
     
     @property
