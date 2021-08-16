@@ -14,8 +14,8 @@ followers = db.Table(
 likes = db.Table(
    "likes",
    db.Model.metadata,
-   db.Column("user_id", db.Interger, db.ForeignKey("users.id")),
-   db.Column("post_id", db.Interger, db.ForeignKey("posts.id"))
+   db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+   db.Column("post_id", db.Integer, db.ForeignKey("posts.id"))
 )
 
 class User(db.Model, UserMixin):

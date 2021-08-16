@@ -4,8 +4,8 @@ from datetime import datetime
 likes = db.Table(
    "likes",
    db.Model.metadata,
-   db.Coloumn("user_id", db.Interger, db.ForeignKey("users.id")),
-   db.Coloumn("post_id", db.Interger, db.ForeignKey("posts.id"))
+   db.Column("user_id", db.Integer, db.ForeignKey("users.id")),
+   db.Column("post_id", db.Integer, db.ForeignKey("posts.id"))
 )
 
 
