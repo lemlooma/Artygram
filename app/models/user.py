@@ -11,6 +11,13 @@ followers = db.Table(
     db.Column("timestamp", db.DateTime, default=datetime.now)
 )
 
+likes = db.Table(
+   "likes",
+   db.Model.metadata,
+   db.Coloumn("user_id", db.Interger, db.ForeignKey("users.id")),
+   db.Coloumn("post_id", db.Interger, db.ForeignKey("posts.id"))
+)
+
 
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
@@ -30,9 +37,12 @@ class User(db.Model, UserMixin):
         backref = db.backref('followers', lazy='dynamic'), 
         lazy='dynamic'
     )
+    
+    posts = db.relationship('Post', back_populates="users")
+    comments = db.relatipnship('Comment', back_populates="users")
+    userLikes = db.relationship("Post", secondary=likes, back_populates="postlikes")
 
-
-
+    
     @property
     def password(self):
         return self.hashed_password
