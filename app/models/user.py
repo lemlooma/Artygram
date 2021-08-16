@@ -18,7 +18,6 @@ likes = db.Table(
    db.Coloumn("post_id", db.Interger, db.ForeignKey("posts.id"))
 )
 
-
 class User(db.Model, UserMixin):
     __tablename__ = 'users'
     
