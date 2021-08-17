@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
+import  "./Navbar.css";
 
 const NavBar = ({ userdata, setAuthenticated }) => {
   const history = useHistory();
@@ -29,7 +30,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
   return (
     <nav>
       <NavLink exact to="/">
-        <img alt={`artygram`} className="artygram" src={`${artygram}`}></img>
+        <img alt={`artygram`} className="artygram_logo" src={`${artygram}`}></img>
       </NavLink>
       <NavLink exact to="/post/new">
         <img alt={`addpic`} className="addpic" src={`${addpic}`}></img>
