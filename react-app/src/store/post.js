@@ -84,7 +84,7 @@ export default function posts(state = initialState, action) {
 
         }
         case CREATE_POST: {
-            const newState = { ...state, ...action.payload }
+            const newState = { ...state }
             return newState
         }
         default:
