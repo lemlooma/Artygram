@@ -19,7 +19,10 @@ def get_posts():
     posts = Post.query.filter(Post.user_id.in_(
         following_ids)).order_by(Post.timestamp.desc()).all()
 
-    return {"Posts": [post.to_dict() for post in posts]}
+    users = User.query.filter(User.id.in_(following_ids)).all()
+
+    return {post.id: post.to_dict() for post in posts}
+    # return {"Posts": {post.id: post.to_dict() for post in posts}}
 
 
 @post_routes.route('/new', methods=['GET', 'POST'])
@@ -42,3 +45,13 @@ def create_posts():
         return new_post.to_dict()
 
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+
+
+@post_routes.route('/<int:id>', methods=["DELETE"])
+@login_required
+def delete_post(id):
+    post = Post.query.get(id)
+    db.session.delete(post)
+    db.session.commit()
+
+    return jsonify("Delete successful")
