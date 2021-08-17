@@ -1,15 +1,12 @@
 
-.splah__container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 40px;
-}
 
 .header__container {
     display: flex;
+}
+
+.content-title {
+    width: 300px;
+    font-size: 2rem;
 }
 
 .splash-title {
@@ -35,7 +32,7 @@
 .grid-pic {
     margin: 10px;
     height: 115px;
-    width: 115px;
+    width: 130px;
     border-radius: 3px;
     box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.14),
         0px 3px 1px -2px rgba(0, 0, 0, 0.12), 0px 1px 5px 0px rgba(0, 0, 0, 0.2);
@@ -58,6 +55,14 @@
     align-items: center;
 }
 
+.splash__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 40px;
+}
 .log-in-button {
     margin-top: 20px;
     background-color: #b2dffc;
@@ -67,7 +72,7 @@
    
     color: #f5f7f9;
     border-radius: 3px;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: bold;
     transition: background-color 0.5s;
     transition-timing-function: ease-in-out;
@@ -83,13 +88,13 @@
 .sign-up-button {
     margin-top: 20px;
     border: 0px;
-    background-color: #ad6bf8;
+    background-color: #a5f1a9;
 
     height: 33.33px;
     /* letter-spacing: 0.1rem; */
     color: #f5f7f9;
     border-radius: 3px;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: bold;
     transition: background-color 0.5s;
     transition-timing-function: ease-in-out;
@@ -98,21 +103,21 @@
 }
 
 .sign-up-button:hover {
-    background-color: #b2dffc;
-    background-color: #8929f7;
+    
+    background-color: #5cd376;
 
     cursor: pointer;
 }
 .demo-button {
     margin-top: 20px;
-    background-color: #b2dffc;
+    background-color: #fdc9fd;
 
     border: 0px;
     height: 33.33px;
    
-    color: #f5f7f9;
+    color: #ffffff;
     border-radius: 3px;
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     font-weight: bold;
     transition: background-color 0.5s;
     transition-timing-function: ease-in-out;
@@ -120,8 +125,7 @@
     text-decoration: none;
 }
 .demo-button:hover {
-    background-color: #b2dffc;
-    background-color: #8929f7;
+    background-color: #eb54c0;
 
     cursor: pointer;
 }
@@ -140,3 +144,15 @@
     height: 100%;
 }
 
+.footer__container {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.footer-link {
+    text-decoration: None;
+    margin: 15px;
+    color: rgb(65, 65, 65);
+    font-size: 0.8rem;
+}
