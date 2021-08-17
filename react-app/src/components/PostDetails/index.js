@@ -1,47 +1,57 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPosts } from "../../store/post";
-import { useParams } from "react-router";
+import { useParams, useHistory } from "react-router-dom";
+import { deleteOnePost } from "../../store/post";
 
 const PostDetails = () => {
-  const { postId } = useParams();
+    const { postId } = useParams();
 
-  const dispatch = useDispatch();
+    const dispatch = useDispatch();
+    const history = useHistory();
 
-  const posts = useSelector((state) => state.posts);
+    const posts = useSelector((state) => Object.values(state.posts));
 
-  const allPost = posts.Posts;
-  console.log(allPost);
+    // const allPost = posts.Posts;
+    // console.log(allPost);
 
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, []);
+    useEffect(() => {
+        dispatch(getAllPosts());
+    }, [dispatch]);
 
-  const post = allPost?.find((post) => post.id === +postId);
+    const post = posts?.find((post) => post.id === +postId);
 
- return ( 
-     <div>
-      { post ? (
-          <>
+    const handleDelete = async () => {
+        let swo = await dispatch(deleteOnePost(postId))
+        if (swo) {
+            history.push('/')
+        }
+    }
+
+    return (
         <div>
-          <img width="50px" src={`${post.user.profile_pic}.png`} />
-          <span> {post.user.username}</span>
+            {post ? (
+                <>
+                    <div>
+                        <img width="50px" src={`${post.user.profile_pic}.png`} />
+                        <span> {post.user.username}</span>
+                    </div>
+                    <div>
+                        <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
+                    </div>
+                    <button>
+                        <i class="far fa-heart"></i>
+                    </button>
+                    <div>likes: {post.likesnum}</div>
+                    <div>{post.caption}</div>
+                    <div>comments: {post.commentsnum}</div>
+                    <div>{post.timestamp}</div>
+                    <button onClick={handleDelete}>Delete Post</button>
+                </>
+
+            ) : null}
         </div>
-        <div>
-        <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
-        </div>
-        <button>
-          <i class="far fa-heart"></i>
-        </button>
-        <div>likes: {post.likesnum}</div>
-        <div>{post.caption}</div>
-        <div>comments: {post.commentsnum}</div>
-        <div>{post.timestamp}</div>
-      </>
-      
-      ): null}
-    </div>
-  );
+    );
 };
 
 export default PostDetails;
