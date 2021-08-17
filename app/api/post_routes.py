@@ -19,12 +19,10 @@ def get_posts():
     posts = Post.query.filter(Post.user_id.in_(
         following_ids)).order_by(Post.timestamp.desc()).all()
 
-    users = User.query.filter(User.id.in_(following_ids)).all()
-
     return {"Posts": [post.to_dict() for post in posts]}
 
 
-@post_routes.route('/new', methods=['POST'])
+@post_routes.route('/new', methods=['GET', 'POST'])
 @login_required
 def create_posts():
     user = current_user
@@ -36,9 +34,11 @@ def create_posts():
             user_id=user.id,
             caption=data['caption'],
             pic_url=data['pic_url'],
-            timestamp=datetime.now
+            timestamp=datetime.now()
         )
+
         db.session.add(new_post)
         db.session.commit()
-        return {new_post.to_dict()}
+        return new_post.to_dict()
+
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
