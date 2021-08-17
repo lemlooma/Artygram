@@ -1,0 +1,9 @@
+body, html {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Trebuchet MS';
+    align-content: center;
+    width: 50%;
+    min-width: 500px;
+    margin: auto;
+}
