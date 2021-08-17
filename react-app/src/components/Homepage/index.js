@@ -26,7 +26,7 @@ const HomePage = () => {
                     <span> {post.user.username}</span>
                 </div>
                 <div>
-                    <img width="300px" src={post.pic_url} alt={`img-${post.id}`} />
+                    <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
                 </div>
                 <button><i class="far fa-heart"></i></button>
                 <div>likes: {post.likesnum}</div>
