@@ -19,8 +19,6 @@ def get_posts():
     posts = Post.query.filter(Post.user_id.in_(
         following_ids)).order_by(Post.timestamp.desc()).all()
 
-    users = User.query.filter(User.id.in_(following_ids)).all()
-
     return {"Posts": [post.to_dict() for post in posts]}
 
 
