@@ -37,7 +37,7 @@ const LoginForm = () => {
     <>
       <div className="login-form__container">
         <i className="fab fa-instagram fa-2x"></i>
-        <h1 className="form-title">Log In</h1>
+        <h1 className="form-title">Artygram</h1>
         <form className="login-form" onSubmit={onLogin}>
           <div>
             {errors.map((error) => (

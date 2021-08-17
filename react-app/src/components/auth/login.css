@@ -13,8 +13,12 @@
 
 .form-title {
     display: inline;
-    font-size: 1.5rem;
-    margin-bottom: 30px;
+    font-weight: bold;
+    font-size: 2.6rem;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    font-family:  cursive;
+    letter-spacing: 2px;
 }
 
 .sign-up__container {
@@ -111,4 +115,5 @@
 .sign-up-link {
     text-decoration: none;
     color: #0095f6;
+    font-weight: 350;
 }
