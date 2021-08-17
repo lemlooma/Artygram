@@ -11,6 +11,7 @@ import { authenticate } from './store/session';
 import SplashPage from "./components/splash-page/SplashPage";
 import HomePage from './components/Homepage';
 import PostDetails from './components/PostDetails';
+import PostForm from './components/PostForm';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -49,6 +50,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
+        </ProtectedRoute>
+        <ProtectedRoute path='/post/new' exact={true}>
+          <PostForm />
         </ProtectedRoute>
         <ProtectedRoute path='/post/:postId' exact={true} >
           <PostDetails />
