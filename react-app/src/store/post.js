@@ -20,10 +20,8 @@ const initialState = { posts: null };
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case GET_POSTS: {
-            const posts = {
-                ...action.payload
-            }
-            return posts
+            
+            return {...action.payload} 
         }
         default:
             return state;

@@ -1,5 +1,6 @@
 import { useEffect } from "react"
 import { useSelector, useDispatch } from "react-redux"
+import { Link } from "react-router-dom"
 import { getAllPosts } from "../../store/post"
 
 
@@ -25,9 +26,11 @@ const HomePage = () => {
                     <img width="50px" src={`${post.user.profile_pic}.png`}/>
                     <span> {post.user.username}</span>
                 </div>
-                <div>
+                <Link to={`post/${post.id}`}>
+                    <div>
                     <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
-                </div>
+                    </div>
+                </Link>
                 <button><i class="far fa-heart"></i></button>
                 <div>likes: {post.likesnum}</div>
                 <div>{post.caption}</div>
