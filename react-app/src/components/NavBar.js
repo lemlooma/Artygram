@@ -2,6 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
+// import DemoLoginButton from './auth/DemoLogin';
 
 const NavBar = () => {
   return (
@@ -12,11 +13,21 @@ const NavBar = () => {
             Home
           </NavLink>
         </li>
-        <li>
+        {/* <li>
+          <NavLink to='/' exact={true} activeClassName='active'>
+            Upload
+          </NavLink>
+        </li> */}
+        {/* <li>
+          <NavLink to='/sign-up' exact={true} activeClassName='active'>
+            Sign Up
+          </NavLink>
+        </li> */}
+        {/* <li>
           <NavLink to='/users' exact={true} activeClassName='active'>
             Users
           </NavLink>
-        </li>
+        </li> */}
         <li>
           <LogoutButton />
         </li>
