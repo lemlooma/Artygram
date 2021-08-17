@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect } from 'react-router-dom';
+import { Redirect, NavLink } from 'react-router-dom';
 import { signUp } from '../../store/session';
+import DemoLoginButton from './DemoLogin';
+import "./login-signup.css";
 
-const SignUpForm = () => {
+const SignUpForm = ({setAuthenticated}) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -43,51 +45,74 @@ const SignUpForm = () => {
   }
 
   return (
-    <form onSubmit={onSignUp}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
-        <label>User Name</label>
-        <input
-          type='text'
-          name='username'
-          onChange={updateUsername}
-          value={username}
-        ></input>
-      </div>
-      <div>
-        <label>Email</label>
-        <input
-          type='text'
-          name='email'
-          onChange={updateEmail}
-          value={email}
-        ></input>
-      </div>
-      <div>
-        <label>Password</label>
-        <input
-          type='password'
-          name='password'
-          onChange={updatePassword}
-          value={password}
-        ></input>
-      </div>
-      <div>
-        <label>Repeat Password</label>
-        <input
-          type='password'
-          name='repeat_password'
-          onChange={updateRepeatPassword}
-          value={repeatPassword}
-          required={true}
-        ></input>
-      </div>
-      <button type='submit'>Sign Up</button>
-    </form>
+          <>
+            <div className="login-form__container">
+                <i className="fab fa-instagram fa-2x"></i>
+                <h1 className="form-title">Sign up</h1>
+                <form className="login-form" onSubmit={onSignUp}>
+                    <div className="input__container">
+                        <input
+                            className="input"
+                            type="text"
+                            name="username"
+                            placeholder="Username"
+                            onChange={updateUsername}
+                            value={username}
+                        ></input>
+                    </div>
+                    <div className="input__container">
+                        <input
+                            className="input"
+                            type="text"
+                            name="email"
+                            placeholder="Email"
+                            onChange={updateEmail}
+                            value={email}
+                        ></input>
+                    </div>
+                    <div className="input__container">
+                        <input
+                            className="input"
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            onChange={updatePassword}
+                            value={password}
+                        ></input>
+                    </div>
+                    <div className="input__container">
+                        <input
+                            type="password"
+                            name="repeat_password"
+                            className="input"
+                            placeholder="Confirm Password"
+                            onChange={updateRepeatPassword}
+                            value={repeatPassword}
+                            required={true}
+                        ></input>
+                    </div>
+                    <button className="log-in-button" type="submit">
+                        Sign Up
+                    </button>
+                </form>
+                <div className="divider__container">
+                    <div className="divider">
+                        <strong className="divider-title">OR</strong>
+                    </div>
+                </div>
+                <div className="demo-login__container">
+                  <DemoLoginButton />
+                </div>
+            </div>
+            <div className="sign-up__container">
+                <p className="sign-up-text">
+                    Already have an account?{" "}
+                    <NavLink className="sign-up-link" to="/login">
+                        Log in
+                    </NavLink>
+                </p>
+            </div>
+        </>
   );
 };
 
