@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import DemoLogin from './DemoLogin';
-import "./login.css";
+import "./login-signup.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -20,7 +20,6 @@ const LoginForm = () => {
     }
   };
   
-
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
