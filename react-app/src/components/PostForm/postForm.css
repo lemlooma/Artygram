@@ -1,0 +1,69 @@
+.post-form__container {
+    margin: 100px auto 0px auto;
+    padding: 30px 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    width: 400px;
+    border: 1px solid #dbdbdb;
+    border-radius: 3px;
+}
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.textarea {
+    height: 200px;
+    width: 300px;
+    background-color: #fafafa;
+    border-radius: 3px;
+    border: 1px solid #dbdbdb;
+    padding: 5px 10px;
+    color: #000;
+}
+
+.create-button {
+    margin-top: 20px;
+    background-color: #b2dffc;
+
+    border: 0px;
+    height: 33.33px;
+    /* letter-spacing: 0.1rem; */
+    color: #f5f7f9;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.create-button:hover {
+    background-color: #0095f6;
+
+    cursor: pointer;
+}
+
+.cancel-button{
+    margin-top: 20px;
+    background-color: rgba(255, 0, 0, 0.555);
+
+    border: 0px;
+    height: 33.33px;
+    /* letter-spacing: 0.1rem; */
+    color: #f5f7f9;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    transition-timing-function: ease-in-out;
+}
+
+.cancel-button:hover {
+    background-color: red;
+
+    cursor: pointer;
+}

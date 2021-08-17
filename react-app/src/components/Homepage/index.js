@@ -9,7 +9,7 @@ const HomePage = () => {
 
     const posts = useSelector(state => state.posts)
     const dispatch = useDispatch();
-
+    console.log(posts)
     const allPosts = posts.Posts
 
     useEffect(() => {
