@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { Redirect, useHistory } from 'react-router-dom';
 import { createPost } from '../../store/post';
+import './postForm.css'
 
 const PostForm = () => {
     const [errors, setErrors] = useState([]);
@@ -30,32 +31,36 @@ const PostForm = () => {
     }
 
     return (
-        <div>
-            <div>Create Post</div>
-            <form onSubmit={handleSubmit}>
+        <div className="post-form__container">
+            <h1 className='form-title'>Create Post</h1>
+            <form onSubmit={handleSubmit} className='post-form'>
                 <div>{errors.map(error => <li>{error}</li>)}</div>
-                <div>
-                    <label htmlFor='pic_url'>Picture Url</label>
+                <div className='input__container'>
+                    {/* <label htmlFor='pic_url'>Picture Url</label> */}
                     <input type='text'
+                        className='input'
                         name='pic_url'
+                        placeholder='Picture Url'
                         onChange={(e) => setPic_Url(e.target.value)}
                         value={pic_url}
                     >
                     </input>
                 </div>
-                <div>
-                    <label htmlFor='caption'>Caption</label>
-                    <input type='text'
+                <div className='input__container'>
+                    {/* <label htmlFor='caption'>Caption</label> */}
+                    <textarea type='text'
                         name='caption'
+                        className='textarea'
+                        placeholder='Caption here!!'
                         onChange={(e) => setCaption(e.target.value)}
                         value={caption}
                     >
-                    </input>
+                    </textarea>
                 </div>
-                <button type='submit'>Create</button>
+                <button className='create-button' type='submit'>Create</button>
             </form>
 
-            <div><button onClick={cancel}>Cancel</button></div>
+            <div><button className='cancel-button' onClick={cancel}>Cancel</button></div>
         </div>
     )
 }
