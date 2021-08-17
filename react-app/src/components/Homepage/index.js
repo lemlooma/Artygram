@@ -23,7 +23,7 @@ const HomePage = () => {
         {allPosts?.map(post =>
             (<div key={post.id}>
                 <div>
-                    <img width="50px" src={`${post.user.profile_pic}.png`}/>
+                    <img width="50px" src={`${post.user.profile_pic}`}/>
                     <span> {post.user.username}</span>
                 </div>
                 <Link to={`post/${post.id}`}>

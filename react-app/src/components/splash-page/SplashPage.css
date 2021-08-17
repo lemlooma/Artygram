@@ -156,3 +156,21 @@
     color: rgb(65, 65, 65);
     font-size: 0.8rem;
 }
+
+.search-bar {
+    display: flex;
+    width: 80%;
+    justify-content: center;
+}
+
+.search-bar {
+    border-radius: 30px;
+    width: 300px;
+    height: 30px;
+    font-size: 15px;
+    text-align: center;
+    position: relative;
+    top: 10px;
+    background-color: #eee;
+    border: solid 1px rgb(143, 143, 143);
+}
