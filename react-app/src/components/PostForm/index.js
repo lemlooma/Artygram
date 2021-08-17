@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { Redirect, NavLink } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { createPost } from '../../store/post';
 
 const PostForm = () => {
@@ -11,33 +11,28 @@ const PostForm = () => {
     const user = useSelector(state => state.session.user);
 
     const dispatch = useDispatch();
+    const history = useHistory()
 
     if(!user){
         return <Redirect to='/login'/>;
     }
 
-    const onSubmit = async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
+           dispatch(createPost(caption, pic_url));
 
-       try{
-           const data = await dispatch(createPost(caption, pic_url));
-           if(data){
-                return <Redirect to='/'/>
-            }
-       }catch(err){
-        let data = await err.json();
-        setErrors(data.errors)
-       }
+            history.push('/')
+
     }
 
-    const cancel =() => {
-        return <Redirect to='/'/>
+    const cancel = () => {
+        history.push('/')
     }
 
     return (
         <div>
             <div>Create Post</div>
-            <form onSubmit={onSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>{errors.map(error => <li>{error}</li>)}</div>
                 <div>
                     <label htmlFor='pic_url'>Picture Url</label>
