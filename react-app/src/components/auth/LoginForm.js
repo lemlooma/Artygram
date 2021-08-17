@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
+import DemoLogin from './DemoLogin';
+import "./login.css";
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -32,34 +34,58 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
+    <>
+      <div className="login-form__container">
+        <i className="fab fa-instagram fa-2x"></i>
+        <h1 className="form-title">Log In</h1>
+        <form className="login-form" onSubmit={onLogin}>
+          <div>
+            {errors.map((error) => (
+              <div>{error}</div>
+            ))}
+          </div>
+          <div className="input__container">
+            <input
+              className="input"
+              name="email"
+              type="text"
+              placeholder="Email"
+              value={email}
+              onChange={updateEmail}
+            />
+          </div>
+          <div className="input__container">
+            <input
+              className="input"
+              name="password"
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={updatePassword}
+            />
+            <button className="log-in-button" type="submit">
+              Log In
+            </button>
+          </div>
+        </form>
+        <div className="divider__container">
+          <div className="divider">
+            <strong className="divider-title">OR</strong>
+          </div>
+        </div>
+        <div className="demo-login__container">
+          <DemoLogin/>
+        </div>
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
-        <input
-          name='email'
-          type='text'
-          placeholder='Email'
-          value={email}
-          onChange={updateEmail}
-        />
+      <div className="sign-up__container">
+        <p className="sign-up-text">
+          Don't have an account?{" "}
+          <NavLink className="sign-up-link" to="/sign-up">
+            Sign up
+          </NavLink>
+        </p>
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
-        <input
-          name='password'
-          type='password'
-          placeholder='Password'
-          value={password}
-          onChange={updatePassword}
-        />
-        <button type='submit'>Login</button>
-      </div>
-    </form>
+    </>
   );
 };
 

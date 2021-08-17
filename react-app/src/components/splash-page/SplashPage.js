@@ -68,15 +68,16 @@ export default function SplashPage({authenticated }) {
             </div>
           </div>
           <div className="content__container">
-            <h2 className="content-title"></h2>
+            <h2 className="content-title">
+              The Connection between all Art and Your Heart.
+            </h2>
             <NavLink to="/login" className="log-in-button">
               <span className="text">Log In</span>
             </NavLink>
             <NavLink to="/sign-up" className="sign-up-button">
               <span className="text">Sign up</span>
             </NavLink>
-            <DemoLogin to="/demo"
-                />
+            <DemoLogin to="/demo" />
           </div>
         </div>
       </div>
