@@ -9,7 +9,6 @@ const HomePage = () => {
     const posts = useSelector(state => state.posts)
     const dispatch = useDispatch();
 
-    console.log(posts.Posts)
     const allPosts = posts.Posts
 
     useEffect(() => {
@@ -23,10 +22,16 @@ const HomePage = () => {
         {allPosts?.map(post =>
             (<div key={post.id}>
                 <div>
+                    <img width="50px" src={`${post.user.profile_pic}.png`}/>
+                    <span> {post.user.username}</span>
+                </div>
+                <div>
                     <img width="300px" src={post.pic_url} alt={`img-${post.id}`} />
                 </div>
-                <div>User: {post.user_id}</div>
+                <button><i class="far fa-heart"></i></button>
+                <div>likes: {post.likesnum}</div>
                 <div>{post.caption}</div>
+                <div>comments: {post.commentsnum}</div>
                 <div>{post.timestamp}</div>
             </div>)
             )}

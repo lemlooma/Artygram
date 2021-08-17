@@ -1,6 +1,8 @@
 from .db import db
+from flask import jsonify
 from datetime import datetime
 from .like import likes
+from .user import User
 
 
 class Post(db.Model):
@@ -20,12 +22,19 @@ class Post(db.Model):
         "User", secondary=likes, back_populates="posts")
 
     def to_dict(self):
+        user = User.query.filter(User.id == self.user_id).first()
+
         return {
             'id': self.id,
             'caption': self.caption,
             'pic_url': self.pic_url,
             "user_id": self.user_id,
-            "timestamp": self.timestamp
+            "timestamp": self.timestamp,
+            "user": user.to_dict(),
+            "comments": self.comments,
+            "postlikes": self.postlikes,
+            "likesnum": len(self.postlikes),
+            "commentsnum": len(self.comments)
         }
 
     def to_dict_associations(self):

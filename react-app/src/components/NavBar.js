@@ -5,6 +5,7 @@ import LogoutButton from './auth/LogoutButton';
 import DemoLoginButton from './auth/DemoLogin';
 
 const NavBar = () => {
+
   return (
     <nav>
       <ul>
@@ -31,7 +32,7 @@ const NavBar = () => {
         <li>
           <LogoutButton />
         </li>
-        
+
       </ul>
     </nav>
   );
