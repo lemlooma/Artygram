@@ -9,14 +9,9 @@ const HomePage = () => {
 
     const posts = useSelector(state => Object.values(state.posts))
     const dispatch = useDispatch();
-<<<<<<< HEAD
-    console.log(posts)
-    const allPosts = posts.Posts
-=======
 
     // const allPosts = posts.sort()
     console.log(posts)
->>>>>>> main
 
     useEffect(() => {
         dispatch(getAllPosts())
