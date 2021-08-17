@@ -24,8 +24,12 @@ const HomePage = () => {
             {posts?.map(post =>
             (<div key={post.id}>
                 <div>
-                    <img width="50px" src={`${post.user.profile_pic}`} />
-                    <span> {post.user.username}</span>
+
+                    <img width="50px" src={`${post.user?.profile_pic}`} />
+                    <span> {post.user?.username}</span>
+
+                
+
                 </div>
                 <Link to={`post/${post.id}`}>
                     <div>
