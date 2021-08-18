@@ -18,8 +18,8 @@ class Post(db.Model):
 
     comments = db.relationship("Comment", back_populates="posts")
 
-    postlikes = db.relationship(
-        "User", secondary=likes, back_populates="posts")
+    postLikes = db.relationship(
+        "User", secondary=likes, back_populates="userLikes")
 
     def to_dict(self):
         user = User.query.filter(User.id == self.user_id).first()
@@ -32,15 +32,15 @@ class Post(db.Model):
             "timestamp": self.timestamp,
             "user": user.to_dict(),
             "comments": self.comments,
-            "postlikes": self.postlikes,
-            "likesnum": len(self.postlikes),
+            "postlikes": self.postLikes,
+            "likesnum": len(self.postLikes),
             "commentsnum": len(self.comments)
         }
 
     def to_dict_associations(self):
         return {
             "comments": self.comments,
-            "postlikes": self.postlikes,
-            "likesnum": len(self.postlikes),
+            "postlikes": self.postLikes,
+            "likesnum": len(self.postLikes),
             "commentsnum": len(self.comments)
         }

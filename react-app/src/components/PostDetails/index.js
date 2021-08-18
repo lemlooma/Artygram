@@ -1,8 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAllPosts } from "../../store/post";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteOnePost } from "../../store/post";
+import EditCaption from "../EditCaption";
 
 const PostDetails = () => {
     const { postId } = useParams();
@@ -11,6 +12,8 @@ const PostDetails = () => {
     const history = useHistory();
 
     const posts = useSelector((state) => Object.values(state.posts));
+
+    const [showEditCaption, setShowEditCaption] = useState(null)
 
     // const allPost = posts.Posts;
     // console.log(allPost);
@@ -28,8 +31,18 @@ const PostDetails = () => {
         }
     }
 
+    let edit = null;
+
+    if (showEditCaption) {
+        edit = (
+            <EditCaption post={post} hideForm={() => setShowEditCaption(null)} />
+        )
+    }
+
+
+
     return (
-        <div>
+        <div className='post-detail__container'>
             {post ? (
                 <>
                     <div>
@@ -40,13 +53,18 @@ const PostDetails = () => {
                         <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
                     </div>
                     <button>
-                        <i class="far fa-heart"></i>
+                        <i className="far fa-heart"></i>
                     </button>
                     <div>likes: {post.likesnum}</div>
-                    <div>{post.caption}</div>
+                    <div>{post.caption} <button onClick={() => setShowEditCaption(post.id)} >Edit</button></div>
+
+                    {showEditCaption ?
+                        edit
+                        : ''}
                     <div>comments: {post.commentsnum}</div>
                     <div>{post.timestamp}</div>
                     <button onClick={handleDelete}>Delete Post</button>
+
                 </>
 
             ) : null}

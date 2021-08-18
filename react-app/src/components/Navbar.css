@@ -1,10 +1,28 @@
 .artygram_logo {
- width: 150px;
-  margin-right: 120px;
+width: 150px;
+margin-right: 10px;
 }
 
 .addpic{
-   width: 50px;
+   width: 40px;
+   margin-right: 10px;
+}
+
+.navbar__container{
+   display: flex;
+   align-items: center;
+   height: 70px;
+   box-sizing: border-box;
+   border-bottom: 1px solid rgba(128, 128, 128, 0.384);
+   width: 603px;
+   justify-content: space-between;
+   z-index: 10;
+   position: fixed;
+   background-color: white;
+}
 
 
+.right-navbar{
+   display: flex;
+   align-items: center;
 }

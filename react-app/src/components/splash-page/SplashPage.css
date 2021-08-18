@@ -61,7 +61,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    margin-top: 40px;
+    margin-top: 100px;
 }
 .log-in-button {
     margin-top: 20px;
@@ -69,7 +69,7 @@
 
     border: 0px;
     height: 33.33px;
-   
+
     color: #f5f7f9;
     border-radius: 3px;
     font-size: 0.9rem;
@@ -103,7 +103,7 @@
 }
 
 .sign-up-button:hover {
-    
+
     background-color: #5cd376;
 
     cursor: pointer;
@@ -114,7 +114,7 @@
 
     border: 0px;
     height: 33.33px;
-   
+
     color: #ffffff;
     border-radius: 3px;
     font-size: 0.8rem;

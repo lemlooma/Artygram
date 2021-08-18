@@ -47,6 +47,28 @@ def create_posts():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
+@post_routes.route('/<int:id>', methods=['PUT'])
+@login_required
+def update_caption(id):
+    post = Post.query.get(id)
+    form = CreatePostForm()
+
+    test = request.get_json()
+    print(test)
+    # if current_user.get_id() != post.user_id:
+    #     return jsonify({"error": 'Not Authorized'})
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        post.caption = data['caption']
+
+        # print('THIS IS OUR DATA   ', data['caption'])
+        # print('THIS IS OUR CAPTION   ', post.caption)
+    # db.session.add(post)
+    db.session.commit()
+    return post.to_dict()
+
+
 @post_routes.route('/<int:id>', methods=["DELETE"])
 @login_required
 def delete_post(id):
