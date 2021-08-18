@@ -2,6 +2,7 @@
 const GET_POSTS = 'posts/GET_POSTS'
 const DELETE_POST = 'post/DELETE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
+const EDIT_CAPTION = 'posts/EDIT_CAPTION'
 
 const getPosts = (posts) => ({
     type: GET_POSTS,
@@ -18,6 +19,11 @@ const newPost = (post) => ({
     payload: post
 })
 
+const editCaption = (caption) => ({
+    type: EDIT_CAPTION,
+    caption
+})
+
 export const getAllPosts = () => async dispatch => {
     const req = await fetch(`/api/posts/`);
     if (req.ok) {
@@ -26,6 +32,20 @@ export const getAllPosts = () => async dispatch => {
         dispatch(getPosts(posts))
     }
     return req
+}
+
+export const updateCaption = (post) => async dispatch => {
+    const { id, caption } = post
+
+    const res = await fetch(`/api/posts/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ caption })
+    })
+    if (res.ok) {
+        const caption = await res.json();
+        dispatch(editCaption(caption))
+    }
+    return caption
 }
 
 export const deleteOnePost = (id) => async dispatch => {

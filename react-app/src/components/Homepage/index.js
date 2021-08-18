@@ -12,6 +12,7 @@ const HomePage = () => {
 
     // const allPosts = posts.sort()
     console.log(posts)
+    const sortedPosts = posts.reverse()
 
     useEffect(() => {
         dispatch(getAllPosts())
@@ -21,14 +22,14 @@ const HomePage = () => {
     return (
         <div>
             <h1>This is my Home Page</h1>
-            {posts?.map(post =>
+            {sortedPosts?.map(post =>
             (<div key={post.id}>
                 <div>
 
                     <img width="50px" src={`${post.user?.profile_pic}`} />
                     <span> {post.user?.username}</span>
 
-                
+
 
                 </div>
                 <Link to={`post/${post.id}`}>
