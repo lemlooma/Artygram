@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
 import { getAllPosts } from '../../store/post';
 import PostForm from '../PostForm';
 import './user.css'
@@ -9,18 +9,18 @@ function User() {
   // const [user, setUser] = useState({});
   const { userId }  = useParams();
   const dispatch = useDispatch()
-  
 
-  
+
+
   const user = useSelector((state) => state.session.user)
   const posts = useSelector((state) => Object.values(state.posts))
   const filteredPost = posts.filter((post)=> post.user_id === user.id)
 
-  console.log(filteredPost.length)
-  
+  console.log(user)
+
   useEffect (()=>{
     dispatch(getAllPosts())
-  },[]) 
+  },[])
 
   // useEffect(() => {
   //   if (!userId) {
@@ -48,14 +48,16 @@ function User() {
       {user.username}
     </div>
     <div className='postFollowerFollowing'>
-    <div>
+    <div className='user-posts__container'>
       {filteredPost.length} posts
     </div>
     <div>
         followers
       </div>
       <div>
-        folowing
+       <NavLink to={`/user/${user.id}/following`}>
+      ({user.follows.length}) following
+      </NavLink>
       </div>
       </div>
       <div>
@@ -64,13 +66,13 @@ function User() {
       </div>
     </div>
     <div>
-    
+
       </div>
      <div className='userPhotoFeed'>
        {filteredPost.map((post)=>(
-         
+
          <img className='userPostPhoto' src={post.pic_url} />
-         
+
        ))}
      </div>
     </div>

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { getAllPosts } from "../../store/post"
@@ -34,7 +34,7 @@ const HomePage = () => {
                     </Link>
                 </div>
                 <div>
-                    <button><i className="far fa-heart"></i></button>
+                    <button  ><i className="far fa-heart"></i></button>
                 </div>
                 <div>likes: {post.likesnum}</div>
                 <div>{post.caption}</div>
