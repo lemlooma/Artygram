@@ -42,7 +42,7 @@ const PostDetails = () => {
 
 
     return (
-        <div>
+        <div className='post-detail__container'>
             {post ? (
                 <>
                     <div>

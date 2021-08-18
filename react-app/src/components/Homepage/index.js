@@ -20,30 +20,41 @@ const HomePage = () => {
 
 
     return (
-        <div className='photo-feed__container'>
+          <div className="photo-feed__container">
             <h1>Welcome {user.username}!</h1>
-            {sortedPosts?.map(post =>
-            (<div key={post.id} className='single-post__container'>
-                <div className='icon-username__container'>
-                    <img className='post-icon' id='post-icon' src={`${post.user?.profile_pic}`} />
-                    <span className='post-username'> {post.user?.username}</span>
+            {sortedPosts?.map((post) => (
+              <div key={post.id} className="single-post__container">
+                <div className="icon-username__container">
+                  <img
+                    className="post-icon"
+                    id="post-icon"
+                    src={`${post.user?.profile_pic}`}
+                  />
+                  <span className="post-username"> {post.user?.username}</span>
                 </div>
                 <div>
-                    <Link to={`post/${post.id}`}>
-                        <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
-                    </Link>
+                  <Link to={`post/${post.id}`}>
+                    <img
+                      width="600px"
+                      src={post.pic_url}
+                      alt={`img-${post.id}`}
+                    />
+                  </Link>
                 </div>
                 <div>
-                    <button><i className="far fa-heart"></i></button>
+                  <button>
+                    <i className="far fa-heart"></i>
+                  </button>
                 </div>
                 <div>likes: {post.likesnum}</div>
                 <div>{post.caption}</div>
                 <div>comments: {post.commentsnum}</div>
                 <div>{post.timestamp}</div>
-            </div>)
-            )}
-        </div>
-    )
+              </div>
+            ))}
+          </div>
+       
+    );
 }
 
 export default HomePage

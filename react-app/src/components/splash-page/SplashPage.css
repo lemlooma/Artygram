@@ -59,9 +59,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 100px;
+   
+    margin-top: 70px;
 }
 .log-in-button {
     margin-top: 20px;
@@ -177,13 +176,15 @@
 
 .footer__container {
     display: flex;
-    align-items: center;
-    margin-top: 100px;
+
+    align-items:center;
+    margin-top: 60px;
+    
 }
 
 .footer-link {
     text-decoration: None;
-    margin: 15px;
+    margin: 40px;
     color: rgb(65, 65, 65);
     font-size: 0.8rem;
 }
