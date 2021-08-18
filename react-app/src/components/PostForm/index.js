@@ -43,6 +43,7 @@ const PostForm = () => {
                         placeholder='Picture Url'
                         onChange={(e) => setPic_Url(e.target.value)}
                         value={pic_url}
+                        required
                     >
                     </input>
                 </div>
@@ -54,6 +55,7 @@ const PostForm = () => {
                         placeholder='Caption here!!'
                         onChange={(e) => setCaption(e.target.value)}
                         value={caption}
+                        required
                     >
                     </textarea>
                 </div>

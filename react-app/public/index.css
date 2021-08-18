@@ -5,7 +5,8 @@ body, html {
     align-content: center;
     width: 60%;
     min-width: 500px;
-    margin: auto;
+    align-items: center;
     display: flex;
     position: relative;
+    margin: auto;
 }
