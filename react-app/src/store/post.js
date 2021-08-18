@@ -19,9 +19,9 @@ const newPost = (post) => ({
     payload: post
 })
 
-const editCaption = (caption) => ({
+const editCaption = (post) => ({
     type: EDIT_CAPTION,
-    caption
+    post
 })
 
 export const getAllPosts = () => async dispatch => {
@@ -34,11 +34,11 @@ export const getAllPosts = () => async dispatch => {
 }
 
 export const updateCaption = (post) => async dispatch => {
-    const { id, caption,  } = post
+    const { id, caption, } = post
     console.log(caption)
     const res = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(post)
     })
     if (res.ok) {
@@ -103,6 +103,12 @@ export default function posts(state = initialState, action) {
             return afterState
 
         }
+        case EDIT_CAPTION: {
+            const updatedState = { ...state, [action.post.id]: action.post }
+
+            return updatedState
+        }
+
         case CREATE_POST: {
             const newState = { ...state }
             return newState

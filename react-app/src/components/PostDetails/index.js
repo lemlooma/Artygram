@@ -33,7 +33,7 @@ const PostDetails = () => {
 
     let edit = null;
 
-    if(showEditCaption){
+    if (showEditCaption) {
         edit = (
             <EditCaption post={post} hideForm={() => setShowEditCaption(null)} />
         )
@@ -56,11 +56,11 @@ const PostDetails = () => {
                         <i className="far fa-heart"></i>
                     </button>
                     <div>likes: {post.likesnum}</div>
-                    <div>{post.caption} <button onClick={()=> setShowEditCaption(post.id)} >Edit</button></div>
+                    <div>{post.caption} <button onClick={() => setShowEditCaption(post.id)} >Edit</button></div>
 
                     {showEditCaption ?
                         edit
-                    : '' }
+                        : ''}
                     <div>comments: {post.commentsnum}</div>
                     <div>{post.timestamp}</div>
                     <button onClick={handleDelete}>Delete Post</button>
