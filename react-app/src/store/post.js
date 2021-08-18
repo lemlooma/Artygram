@@ -28,7 +28,6 @@ export const getAllPosts = () => async dispatch => {
     const req = await fetch(`/api/posts/`);
     if (req.ok) {
         const posts = await req.json();
-        console.log(posts)
         dispatch(getPosts(posts))
     }
     return req

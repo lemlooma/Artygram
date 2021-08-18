@@ -12,7 +12,6 @@ const HomePage = () => {
     const dispatch = useDispatch();
 
     // const allPosts = posts.sort()
-    console.log(posts)
     const sortedPosts = posts.reverse()
 
     useEffect(() => {
