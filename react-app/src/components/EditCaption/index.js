@@ -8,7 +8,16 @@ const EditCaption = ({post, hideForm}) => {
     const handleSubmit = async (e) => {
 
         e.preventDefault()
-        await dispatch(updateCaption(post))
+
+        const payload = {
+            id: post.id,
+            caption: editCaption,
+            pic_url: post.pic_url,
+            user_id: post.user_id
+
+        }
+
+        await dispatch(updateCaption(payload))
 
         hideForm()
     }

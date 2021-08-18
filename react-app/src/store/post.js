@@ -34,17 +34,18 @@ export const getAllPosts = () => async dispatch => {
 }
 
 export const updateCaption = (post) => async dispatch => {
-    const { id, caption } = post
-
+    const { id, caption,  } = post
+    console.log(caption)
     const res = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
-        body: JSON.stringify({ caption })
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(post)
     })
     if (res.ok) {
-        const caption = await res.json();
-        dispatch(editCaption(caption))
+        const editPost = await res.json();
+        dispatch(editCaption(editPost))
+        return editPost
     }
-    return caption
 }
 
 export const deleteOnePost = (id) => async dispatch => {
