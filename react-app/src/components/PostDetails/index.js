@@ -53,7 +53,7 @@ const PostDetails = () => {
                         <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
                     </div>
                     <button>
-                        <i class="far fa-heart"></i>
+                        <i className="far fa-heart"></i>
                     </button>
                     <div>likes: {post.likesnum}</div>
                     <div>{post.caption} <button onClick={()=> setShowEditCaption(post.id)} >Edit</button></div>

@@ -3,7 +3,9 @@ body, html {
     padding: 0px;
     font-family: 'Trebuchet MS';
     align-content: center;
-    width: 50%;
+    width: 60%;
     min-width: 500px;
     margin: auto;
+    display: flex;
+    position: relative;
 }
