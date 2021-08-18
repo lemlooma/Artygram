@@ -6,7 +6,6 @@ from .like import likes
 
 Followers = db.Table(
     "followers",
-    db.Model.metadata,
     db.Column("followerId", db.Integer, db.ForeignKey("users.id")),
     db.Column("followingId", db.Integer, db.ForeignKey("users.id")),
     db.Column("timestamp", db.DateTime, default=datetime.now)
@@ -23,14 +22,14 @@ class User(db.Model, UserMixin):
     profile_pic = db.Column(db.String(255))
     hashed_password = db.Column(db.String(255), nullable=False)
 
-    # follows = db.relationship(
-    #     'User',
-    #     secondary=Followers,
-    #     primaryjoin=(Followers.c.followerId == id),
-    #     secondaryjoin=(Followers.c.followingId == id),
-    #     backref=db.backref('followers', lazy='dynamic'),
-    #     lazy='dynamic'
-    # )
+    follows = db.relationship(
+        'User',
+        secondary=Followers,
+        primaryjoin=(Followers.c.followerId == id),
+        secondaryjoin=(Followers.c.followingId == id),
+        backref=db.backref('follow_by', lazy='dynamic'),
+        lazy='dynamic'
+    )
 
     # followers = db.relationship(
     #     'User',
@@ -41,8 +40,8 @@ class User(db.Model, UserMixin):
     #     lazy='dynamic'
     # )
 
-    follows = db.relationship('User', secondary=Followers, primaryjoin=(Followers.c.followerId == id),secondaryjoin=(Followers.c.followingId == id), back_populates='followers')
-    followers = db.relationship('User', secondary=Followers, primaryjoin=(Followers.c.followingId == id),secondaryjoin=(Followers.c.followerId == id), back_populates='follows')
+    # follows = db.relationship('User', secondary=Followers, primaryjoin=(Followers.c.followerId == id),secondaryjoin=(Followers.c.followingId == id), back_populates='follow_by')
+    # follow_by = db.relationship('User', secondary=Followers, primaryjoin=(Followers.c.followingId == id),secondaryjoin=(Followers.c.followerId == id), back_populates='follows')
 
     posts = db.relationship('Post', back_populates="users")
     comments = db.relationship('Comment', back_populates="users")
@@ -61,12 +60,13 @@ class User(db.Model, UserMixin):
 
     def to_dict(self):
         # print(self.followers)
+
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
             "bio": self.bio,
             "profile_pic": self.profile_pic,
-            "follows": [user.to_dict() for user in self.follows],
-            # "followers": [user.to_dict() for user in self.test],
+            "follows": [{'id': user.id, 'username': user.username} for user in self.follows],
+            "follow_by": [{'id': user.id, 'username': user.username} for user in self.follow_by]
         }
