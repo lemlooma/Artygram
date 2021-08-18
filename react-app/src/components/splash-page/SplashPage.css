@@ -174,3 +174,16 @@
     background-color: #eee;
     border: solid 1px rgb(143, 143, 143);
 }
+
+.footer__container {
+    display: flex;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.footer-link {
+    text-decoration: None;
+    margin: 15px;
+    color: rgb(65, 65, 65);
+    font-size: 0.8rem;
+}

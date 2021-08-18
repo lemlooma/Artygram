@@ -11,7 +11,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
   // const history = useHistory();
   const artygram = "https://i.imgur.com/t3Mtt7E.png";
   const addpic = "https://i.imgur.com/3yiJpcr.png";
- 
+ const profile = ""
 
  
   // const settingsButton = (e) => {
@@ -23,7 +23,6 @@ const NavBar = ({ userdata, setAuthenticated }) => {
   //   e.preventDefault();
   //   history.push(`/users/${userdata.username}`);
   // };
-
 
 
   return (
