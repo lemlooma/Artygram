@@ -16,7 +16,7 @@ function User() {
   const posts = useSelector((state) => Object.values(state.posts))
   const filteredPost = posts.filter((post)=> post.user_id === user.id)
 
-  console.log(user)
+
 
   useEffect (()=>{
     dispatch(getAllPosts())
@@ -52,7 +52,7 @@ function User() {
       {filteredPost.length} posts
     </div>
     <div>
-        followers
+      ({user.follow_by.length}) followers
       </div>
       <div>
        <NavLink to={`/user/${user.id}/following`}>
