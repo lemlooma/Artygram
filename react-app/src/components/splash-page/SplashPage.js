@@ -2,6 +2,8 @@ import React from "react";
 import { NavLink, Redirect } from "react-router-dom";
 import "./SplashPage.css";
 import DemoLogin from "../auth/DemoLogin";
+import Particles from "react-particles-js";
+
 
 export default function SplashPage({authenticated }) {
     if (authenticated) {
@@ -105,5 +107,29 @@ export default function SplashPage({authenticated }) {
             Zhuoxin Tan
           </a>
         </div>
+        <Particles
+          className="party"
+          params={{
+            particles: {
+              color: {
+                value: "#f60095",
+              },
+              number: {
+                value: 60,
+              },
+              size: {
+                value: 4,
+              },
+            },
+            interactivity: {
+              events: {
+                onhover: {
+                  enable: true,
+                  mode: "repulse",
+                },
+              },
+            },
+          }}
+        />
       </>
     );};

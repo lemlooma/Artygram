@@ -3,9 +3,7 @@ const GET_POSTS = 'posts/GET_POSTS'
 const DELETE_POST = 'post/DELETE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
 const EDIT_CAPTION = 'posts/EDIT_CAPTION'
-// const LIKE_POST= "posts/LIKE_POST";
-// const UNLIKE_POST = "events/UNLIKE_POST";
-
+const LIKE_POST= "posts/LIKE_POST";
 
 
 const getPosts = (posts) => ({
@@ -94,19 +92,18 @@ export const createPost = (caption, pic_url) => async dispatch => {
         return ['An error occurred. Please try again.']
     }
 }
-
-
-
-// export const likeOnePost = () => async dispatch => {
-//   const response = await fetch(`/api/posts/${id}`);
-
-//   if (response.ok) {
-//     const liked = await response.json();
-//     dispatch(likeOnePost(id));
-//   }
-// };
-
-
+//    export const likePost = async (id) => {
+//      let response = await fetch(`/api/posts/${id}`, {
+//        method: "POST",
+//      });
+//      if(response.ok) {
+//         const res = await response.json();
+//         dispatch(likePost(res))
+//         return res
+//      }
+     
+    
+//    };
 
 
 
