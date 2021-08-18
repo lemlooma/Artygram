@@ -31,6 +31,9 @@ class User(db.Model, UserMixin):
         backref=db.backref('followers', lazy='dynamic'),
         lazy='dynamic'
     )
+   
+    # follows = db.relationship('User', secondary=followers, primaryjoin=(followers.c.followerId == id),secondaryjoin=(followers.c.followingId == id), back_populates='followers')
+    # followers = db.relationship('User', secondary=followers, primaryjoin=(followers.c.followingId == id),secondaryjoin=(followers.c.followerId == id), back_populates='follows')
 
     posts = db.relationship('Post', back_populates="users")
     comments = db.relationship('Comment', back_populates="users")
@@ -53,5 +56,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             "bio": self.bio,
-            "profile_pic": self.profile_pic
+            "profile_pic": self.profile_pic,
+            # "follows": self.follows,
+            # "followers": self.followers
         }

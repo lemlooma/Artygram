@@ -1,0 +1,28 @@
+.userPageBody {
+    padding-top: 100px;
+}
+.userDetails {
+    display: flex;
+    flex-direction: row;
+}
+.userProfilePic {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+}
+
+.postFollowerFollowing {
+    display: flex;
+    flex-direction: row;
+}
+.userPhotoFeed {
+
+    display: flex;
+    flex-direction: row;
+   
+}
+
+.userPostPhoto {
+    width: 300px;
+    height: 300px;
+}
