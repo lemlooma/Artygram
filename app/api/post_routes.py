@@ -52,17 +52,14 @@ def create_posts():
 def update_caption(id):
     post = Post.query.get(id)
     form = CreatePostForm()
-    # if current_user.get_id() != post.user_id:
 
-    #     return jsonify({"error": 'Not Authorized'})
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        data = form.data
+        post.caption = data['caption']
 
-    print('CAPTION', post.caption)
-
-    post.caption = request.data[1]
-
-    db.session.add(post)
     db.session.commit()
-    return jsonify(post.to_dict())
+    return post.to_dict()
 
 
 @post_routes.route('/<int:id>', methods=["DELETE"])
