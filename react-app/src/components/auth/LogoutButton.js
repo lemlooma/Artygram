@@ -11,7 +11,7 @@ const LogoutButton = () => {
     history.push("/splash")
   };
 
-  return <button onClick={onLogout}>Logout</button>;
+  return <i onClick={onLogout} class="fas fa-sign-out-alt"></i>; 
 };
 
 export default LogoutButton;

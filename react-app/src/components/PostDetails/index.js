@@ -82,7 +82,7 @@ const PostDetails = () => {
             {showEditCaption ? edit : ""}
             <div>comments: {post.commentsnum}</div>
             <div>{post.timestamp}</div>
-            <button onClick={handleDelete}>Delete Post</button>
+            <i onClick={handleDelete}class="far fa-trash-alt"></i>
           </>
         ) : null}
       </div>

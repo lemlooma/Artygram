@@ -57,8 +57,5 @@ const NavBar = ({ userdata, setAuthenticated }) => {
         : ''}
     </>
   );
-
-
-
 };
 export default NavBar;
