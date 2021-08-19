@@ -1,5 +1,5 @@
 from ..models.post import Post
-from ..models.user import User, followers
+from ..models.user import User
 from ..models.db import db
 from flask import Blueprint, request, jsonify
 from flask_login import current_user, login_required
@@ -53,18 +53,11 @@ def update_caption(id):
     post = Post.query.get(id)
     form = CreatePostForm()
 
-    test = request.get_json()
-    print(test)
-    # if current_user.get_id() != post.user_id:
-    #     return jsonify({"error": 'Not Authorized'})
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
         data = form.data
         post.caption = data['caption']
 
-        # print('THIS IS OUR DATA   ', data['caption'])
-        # print('THIS IS OUR CAPTION   ', post.caption)
-    # db.session.add(post)
     db.session.commit()
     return post.to_dict()
 
@@ -77,3 +70,28 @@ def delete_post(id):
     db.session.commit()
 
     return jsonify("Delete successful")
+
+
+@post_routes.route('/<int:id>/like', methods=['PUT'])
+@login_required
+def likeOnPost(id):
+    user = current_user
+    post = Post.query.get(id)
+
+    # print('this is the post!!!!!!!!!!!', dir(post.postLikes))
+    # post.postLikes.append(int(user.id))
+
+    # post.postLikes is a list contains the User object. not the user.id
+    # this is getting all the id in the post.postLikes.
+    allUsersId = [user.id for user in post.postLikes]
+
+    if user.id in allUsersId:
+        #have to remove the whole user object.
+        post.postLikes.remove(user)
+    else:
+        # this has to add the user object. instead of just the user.id
+        post.postLikes.append(user)
+
+    db.session.commit()
+    # print('this is the post!!!!!!!!!!!', post.postLikes)
+    return post.to_dict()

@@ -3,8 +3,7 @@ const GET_POSTS = 'posts/GET_POSTS'
 const DELETE_POST = 'post/DELETE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
 const EDIT_CAPTION = 'posts/EDIT_CAPTION'
-const LIKE_POST= "posts/LIKE_POST";
-
+const LIKE_POST = 'posts/LIKE_POST'
 
 const getPosts = (posts) => ({
     type: GET_POSTS,
@@ -26,10 +25,11 @@ const editCaption = (post) => ({
     post
 })
 
-// const likePost = (liked) => ({
-//   type: LIKE_POST,
-//   liked,
-// });
+const likePost = (post) => ({
+    type: LIKE_POST,
+    post,
+});
+
 
 export const getAllPosts = () => async dispatch => {
     const req = await fetch(`/api/posts/`);
@@ -105,7 +105,21 @@ export const createPost = (caption, pic_url) => async dispatch => {
     
 //    };
 
+export const likeOnePost = (post) => async dispatch => {
+    const { id } = post
 
+    let response = await fetch(`/api/posts/${id}/like`, {
+        method: "PUT",
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(post)
+    });
+    if (response.ok) {
+        const res = await response.json();
+        dispatch(likePost(res))
+        return res
+    }
+
+}
 
 const initialState = {};
 
@@ -131,6 +145,10 @@ export default function posts(state = initialState, action) {
         case CREATE_POST: {
             const newState = { ...state }
             return newState
+        }
+        case LIKE_POST: {
+            const newState = { ...state, [action.post.id]: action.post };
+            return newState;
         }
         default:
             return state;

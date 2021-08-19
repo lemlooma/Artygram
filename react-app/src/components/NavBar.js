@@ -6,11 +6,11 @@ import "./Navbar.css";
 
 const NavBar = ({ userdata, setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
-  // const sessionUser = useSelector((state) => state.session.user);
-  // const history = useHistory();
+
+
   const artygram = "https://i.imgur.com/t3Mtt7E.png";
   const addpic = "https://i.imgur.com/3yiJpcr.png";
- const profile = ""
+
 
  
   // const settingsButton = (e) => {
@@ -47,6 +47,9 @@ const NavBar = ({ userdata, setAuthenticated }) => {
               </NavLink>
             </div>
             <div className='logout__container'>
+              <NavLink to={`/user/${user.id}`}>
+                <img width='40px' src={user.profile_pic} />
+              </NavLink>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </div>
           </div>

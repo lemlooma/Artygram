@@ -27,3 +27,20 @@
     height: 50px;
 }
 
+.liked{
+    color: red;
+    font-size: 20px;
+}
+
+.unliked{
+    font-size: 20px;
+}
+
+.fa-heart:hover{
+    cursor: pointer;
+}
+
+.likebutton{
+    border: none;
+    background-color: white;
+}
