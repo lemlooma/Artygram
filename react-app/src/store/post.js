@@ -59,6 +59,7 @@ export const deleteOnePost = (id) => async dispatch => {
     const res = await fetch(`/api/posts/${id}`, {
         method: 'DELETE'
     })
+    
 
     if (res.ok) {
         const deleted = await res.json()

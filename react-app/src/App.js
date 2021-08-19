@@ -12,6 +12,7 @@ import SplashPage from "./components/splash-page/SplashPage";
 import HomePage from './components/Homepage';
 import PostDetails from './components/PostDetails';
 import PostForm from './components/PostForm';
+import Following from './components/Following/following';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -51,12 +52,16 @@ function App() {
         <ProtectedRoute path='/user/:userId' exact={true} >
           <User />
         </ProtectedRoute>
+        <ProtectedRoute path='/user/:userId/following' exact={true} >
+          <Following />
+        </ProtectedRoute>
         <ProtectedRoute path='/post/new' exact={true}>
           <PostForm />
         </ProtectedRoute>
         <ProtectedRoute path='/post/:postId' exact={true} >
           <PostDetails />
         </ProtectedRoute>
+        
 
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
