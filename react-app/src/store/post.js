@@ -21,9 +21,9 @@ const newPost = (post) => ({
     payload: post
 })
 
-const editCaption = (caption) => ({
+const editCaption = (post) => ({
     type: EDIT_CAPTION,
-    caption
+    post
 })
 
 // const likePost = (liked) => ({
@@ -41,11 +41,11 @@ export const getAllPosts = () => async dispatch => {
 }
 
 export const updateCaption = (post) => async dispatch => {
-    const { id, caption,  } = post
+    const { id, caption, } = post
     console.log(caption)
     const res = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
-        headers: {'Content-Type': 'application/json'},
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(post)
     })
     if (res.ok) {
@@ -111,27 +111,28 @@ const initialState = {};
 
 export default function posts(state = initialState, action) {
     switch (action.type) {
-      case GET_POSTS: {
-        return { ...state, ...action.posts };
-      }
-      case DELETE_POST: {
-        let afterState = { ...state };
+        case GET_POSTS: {
 
-        delete afterState[action.id];
-        return afterState;
-      }
-      case CREATE_POST: {
-        const newState = { ...state };
-        return newState;
-      }
-      default:
-        return state;
+            return { ...state, ...action.posts }
+        }
+        case DELETE_POST: {
+            let afterState = { ...state }
 
-    //   case LIKE_POST: {
-    //     newState = { ...state };
-    //     const newLikes = [...newState.liked, action.post];
-    //     newState.liked = newLikes;
-    //     return newState;
-    //   }
+            delete afterState[action.id]
+            return afterState
+
+        }
+        case EDIT_CAPTION: {
+            const updatedState = { ...state, [action.post.id]: action.post }
+
+            return updatedState
+        }
+
+        case CREATE_POST: {
+            const newState = { ...state }
+            return newState
+        }
+        default:
+            return state;
     }
 }

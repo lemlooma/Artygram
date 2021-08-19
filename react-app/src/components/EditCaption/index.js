@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { updateCaption } from "../../store/post";
 import { useDispatch } from 'react-redux'
-const EditCaption = ({post, hideForm}) => {
-    const [editCaption, setEditCaption] = useState(post.caption)
+const EditCaption = ({ post, hideForm }) => {
+    // const [editCaption, setEditCaption] = useState(post.caption)
+    const [editCaption, setEditCaption] = useState('')
     const dispatch = useDispatch()
 
     const handleSubmit = async (e) => {
