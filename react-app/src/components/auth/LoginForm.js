@@ -97,16 +97,9 @@ const LoginForm = () => {
               value: 60,
             },
             size: {
-              value: 4,
+              value: 3,
             },
-          },
-          interactivity: {
-            events: {
-              onhover: {
-                enable: true,
-                mode: "repulse",
-              },
-            },
+
           },
         }}
       />

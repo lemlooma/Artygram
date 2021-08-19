@@ -118,15 +118,7 @@ export default function SplashPage({authenticated }) {
                 value: 60,
               },
               size: {
-                value: 4,
-              },
-            },
-            interactivity: {
-              events: {
-                onhover: {
-                  enable: true,
-                  mode: "repulse",
-                },
+                value: 3,
               },
             },
           }}

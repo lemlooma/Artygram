@@ -125,15 +125,7 @@ const SignUpForm = ({setAuthenticated}) => {
               value: 60,
             },
             size: {
-              value: 4,
-            },
-          },
-          interactivity: {
-            events: {
-              onhover: {
-                enable: true,
-                mode: "repulse",
-              },
+              value: 3,
             },
           },
         }}
