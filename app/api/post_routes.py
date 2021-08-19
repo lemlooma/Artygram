@@ -73,3 +73,23 @@ def delete_post(id):
     db.session.commit()
 
     return jsonify("Delete successful")
+
+
+@post_routes.route('/<int:id>/like', methods=['PUT'])
+@login_required
+def likeOnPost(id):
+    user = current_user
+    post = Post.query.get(id)
+
+    # print('this is the post!!!!!!!!!!!', dir(post.postLikes))
+    # post.postLikes.append(int(user.id))
+    allUsersId = [user.id for user in post.postLikes]
+
+    if user.id in allUsersId:
+        post.postLikes.remove(user)
+    else:
+        post.postLikes.append(user)
+
+    db.session.commit()
+    # print('this is the post!!!!!!!!!!!', post.postLikes)
+    return post.to_dict()

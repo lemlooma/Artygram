@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { getAllPosts } from "../../store/post"
+import { getAllPosts, likeOnePost } from "../../store/post"
 import './homepage.css'
 
 
@@ -11,6 +11,7 @@ const HomePage = () => {
     const posts = useSelector(state => Object.values(state.posts))
     const dispatch = useDispatch();
 
+    const [postId, setPostId] = useState(false);
     // const allPosts = posts.sort()
     const sortedPosts = posts.reverse()
 
@@ -18,6 +19,11 @@ const HomePage = () => {
         dispatch(getAllPosts())
     }, [])
 
+    // console.log(postId)
+
+    // const handleLikes =(e) => {
+    //     // dispatch(likeOnePost(postId))
+    // }
 
     return (
         <div className='photo-feed__container'>
@@ -34,7 +40,7 @@ const HomePage = () => {
                     </Link>
                 </div>
                 <div>
-                    <button  ><i className="far fa-heart"></i></button>
+                    <button onClick={() => dispatch(likeOnePost(post))} ><i className="far fa-heart"></i></button>
                 </div>
                 <div>likes: {post.likesnum}</div>
                 <div>{post.caption}</div>
