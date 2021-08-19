@@ -4,6 +4,7 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 const DEMO_LOGIN = 'session/demoLogin';
+// const GET_FOLLOWING = 'followers/GET_FOLLOWING'
 
 
 const setUser = (user) => ({
@@ -21,6 +22,12 @@ const demoLogin = (demoUser) => {
     payload: demoUser
   }
 }
+
+// const getFollowing = (user) => ({
+//   type: GET_FOLLOWING,
+//   payload: user
+// })
+
 
 const initialState = { user: null };
 
@@ -121,6 +128,16 @@ export const loginDemo = () => async (dispatch) => {
  }
 }
 
+// export const getAllFollowing = (id) => async dispatch =>  {
+//   const req = await fetch(`/api/auth/${id}/following`)
+//   console.log(req)
+//   if(req.ok){
+//       const following = await req.json()
+//       console.log(following)
+//       dispatch(getFollowing(following))
+//   }
+// }
+
 export default function reducer(state = initialState, action) {
   switch (action.type) {
     case SET_USER:
@@ -129,6 +146,9 @@ export default function reducer(state = initialState, action) {
       return { user: null }
     case DEMO_LOGIN: 
       return { user: action.payload }
+    // case GET_FOLLOWING : {
+    //     return {user: action.payload}
+    // }
     default:
       return state;
   }
