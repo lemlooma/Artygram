@@ -69,11 +69,11 @@ function User() {
 
       </div>
       <div className='userPhotoFeed'>
-        {filteredPost.map((post) => (
-
+        {filteredPost.length > 0? filteredPost.map((post) => (
           <img className='userPostPhoto' src={post.pic_url} />
-
-        ))}
+        )):
+        <div>Go create your first post!!!!</div>
+        }
       </div>
     </div>
 
