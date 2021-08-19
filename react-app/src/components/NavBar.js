@@ -54,9 +54,9 @@ const NavBar = ({ userdata, setAuthenticated }) => {
             </div>
             <div className='logout__container'>
               <NavLink to={`/user/${user.id}`}>
-              <img width='40px' src={user.profile_pic} /> 
+                <img width='40px' src={user.profile_pic} />
               </NavLink>
-              {/* <LogoutButton setAuthenticated={setAuthenticated} /> */}
+              <LogoutButton setAuthenticated={setAuthenticated} />
             </div>
           </div>
 

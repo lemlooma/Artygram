@@ -11,7 +11,7 @@ const HomePage = () => {
     const posts = useSelector(state => Object.values(state.posts))
     const dispatch = useDispatch();
 
-    const [postId, setPostId] = useState(false);
+    const [getPost, setPost] = useState(false);
     // const allPosts = posts.sort()
     const sortedPosts = posts.reverse()
 
@@ -19,11 +19,12 @@ const HomePage = () => {
         dispatch(getAllPosts())
     }, [])
 
-    // console.log(postId)
-
-    // const handleLikes =(e) => {
-    //     // dispatch(likeOnePost(postId))
-    // }
+    useEffect(() => {
+        if(getPost){
+            dispatch(likeOnePost(getPost))
+            // dispatch(getAllPosts())
+        }
+    }, [getPost])
 
     return (
         <div className='photo-feed__container'>
@@ -40,7 +41,10 @@ const HomePage = () => {
                     </Link>
                 </div>
                 <div>
-                    <button onClick={() => dispatch(likeOnePost(post))} ><i className="far fa-heart"></i></button>
+                    {post.postlikes.includes(user.id)
+                    ? <button className='likebutton' onClick={() => setPost(post)} ><i class="fas liked fa-heart"></i></button>
+                     :<button className='likebutton' onClick={() => setPost(post)} ><i className="far unliked fa-heart"></i></button>}
+
                 </div>
                 <div>likes: {post.likesnum}</div>
                 <div>{post.caption}</div>

@@ -25,9 +25,9 @@ const editCaption = (post) => ({
     post
 })
 
-const likePost = (liked) => ({
+const likePost = (post) => ({
     type: LIKE_POST,
-    liked,
+    post,
 });
 
 
@@ -134,12 +134,10 @@ export default function posts(state = initialState, action) {
             const newState = { ...state }
             return newState
         }
-        // case LIKE_POST: {
-        //     newState = { ...state };
-        //     const newLikes = [...newState.liked, action.post];
-        //     newState.liked = newLikes;
-        //     return newState;
-        // }
+        case LIKE_POST: {
+            const newState = { ...state, [action.post.id]: action.post };
+            return newState;
+        }
         default:
             return state;
     }
