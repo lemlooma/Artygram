@@ -12,7 +12,6 @@ const NavBar = ({ userdata, setAuthenticated }) => {
   const addpic = "https://i.imgur.com/3yiJpcr.png";
 
 
- 
   // const settingsButton = (e) => {
   //   e.preventDefault();
   //   history.push(`/users/${userdata.username}/edit`);
@@ -48,7 +47,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
             </div>
             <div className='logout__container'>
               <NavLink to={`/user/${user.id}`}>
-                <img width='40px' src={user.profile_pic} />
+                <img class="navbarProPic" src={user.profile_pic} />
               </NavLink>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </div>
