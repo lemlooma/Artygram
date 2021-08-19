@@ -83,11 +83,16 @@ def likeOnPost(id):
 
     # print('this is the post!!!!!!!!!!!', dir(post.postLikes))
     # post.postLikes.append(int(user.id))
+
+    # post.postLikes is a list contains the User object. not the user.id
+    # this is getting all the id in the post.postLikes.
     allUsersId = [user.id for user in post.postLikes]
 
     if user.id in allUsersId:
+        #have to remove the whole user object.
         post.postLikes.remove(user)
     else:
+        # this has to add the user object. instead of just the user.id
         post.postLikes.append(user)
 
     db.session.commit()
