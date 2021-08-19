@@ -24,7 +24,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
 
 
   return (
-    <>
+    <div className='entire__navbar'>
 
       {user ?
         <div className='navbar__container'>
@@ -55,7 +55,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
 
         </div>
         : ''}
-    </>
+    </div>
   );
 };
 export default NavBar;
