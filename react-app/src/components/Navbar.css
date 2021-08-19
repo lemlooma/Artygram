@@ -4,7 +4,7 @@ margin-right: 10px;
 }
 
 .addpic{
-   width: 40px;
+   width: 30px;
    margin-right: 10px;
 }
 
@@ -25,4 +25,11 @@ margin-right: 10px;
 .right-navbar{
    display: flex;
    align-items: center;
+
+}
+
+.navbarProPic{
+   width: 26px;
+   border-radius: 50% ;
+
 }

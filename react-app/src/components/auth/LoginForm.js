@@ -4,6 +4,8 @@ import { NavLink, Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
 import DemoLogin from './DemoLogin';
 import "./login-signup.css";
+import Particles from "react-particles-js";
+
 
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
@@ -73,7 +75,7 @@ const LoginForm = () => {
           </div>
         </div>
         <div className="demo-login__container">
-          <DemoLogin/>
+          <DemoLogin />
         </div>
       </div>
       <div className="sign-up__container">
@@ -84,6 +86,23 @@ const LoginForm = () => {
           </NavLink>
         </p>
       </div>
+      <Particles
+        className="party"
+        params={{
+          particles: {
+            color: {
+              value: "#f60095",
+            },
+            number: {
+              value: 60,
+            },
+            size: {
+              value: 3,
+            },
+
+          },
+        }}
+      />
     </>
   );
 };

@@ -1,1 +1,11 @@
 /* TODO Add site wide styles */
+body, html {
+    align-content: center;
+    padding-left:165px;
+    width: 60%;
+    min-width: 500px;
+    align-items: center;
+    display: flex;
+    position: relative;
+    margin: auto;
+}

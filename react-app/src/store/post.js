@@ -92,6 +92,18 @@ export const createPost = (caption, pic_url) => async dispatch => {
         return ['An error occurred. Please try again.']
     }
 }
+//    export const likePost = async (id) => {
+//      let response = await fetch(`/api/posts/${id}`, {
+//        method: "POST",
+//      });
+//      if(response.ok) {
+//         const res = await response.json();
+//         dispatch(likePost(res))
+//         return res
+//      }
+     
+    
+//    };
 
 export const likeOnePost = (post) => async dispatch => {
     const { id } = post

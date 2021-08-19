@@ -1,6 +1,7 @@
 .login-form__container {
-    margin: 100px auto 0px auto;
+    margin: 100px auto 0px 100px;
     padding: 30px 10px;
+
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -22,7 +23,7 @@
 }
 
 .sign-up__container {
-    margin: 10px auto;
+    margin: 10px 100px;
     padding:20px 10px;
     display: flex;
     flex-direction: column;
@@ -116,4 +117,13 @@
     text-decoration: none;
     color: #0095f6;
     font-weight: 350;
+}
+
+.party {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
 }

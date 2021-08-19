@@ -1,5 +1,4 @@
 import { useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
@@ -9,25 +8,19 @@ const NavBar = ({ userdata, setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
 
 
-  const history = useHistory();
   const artygram = "https://i.imgur.com/t3Mtt7E.png";
   const addpic = "https://i.imgur.com/3yiJpcr.png";
 
-  const postButton = (e) => {
-    e.preventDefault();
-    history.push("/posts/new");
-  };
 
-  const settingsButton = (e) => {
-    e.preventDefault();
-    history.push(`/users/${userdata.username}/edit`);
-  };
+  // const settingsButton = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/users/${userdata.username}/edit`);
+  // };
 
-  const profileButton = (e) => {
-    e.preventDefault();
-    history.push(`/users/${userdata.username}`);
-  };
-
+  // const profileButton = (e) => {
+  //   e.preventDefault();
+  //   history.push(`/users/${userdata.username}`);
+  // };
 
 
   return (
@@ -54,7 +47,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
             </div>
             <div className='logout__container'>
               <NavLink to={`/user/${user.id}`}>
-                <img width='40px' src={user.profile_pic} />
+                <img class="navbarProPic" src={user.profile_pic} />
               </NavLink>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </div>
@@ -64,8 +57,5 @@ const NavBar = ({ userdata, setAuthenticated }) => {
         : ''}
     </>
   );
-
-
-
 };
 export default NavBar;

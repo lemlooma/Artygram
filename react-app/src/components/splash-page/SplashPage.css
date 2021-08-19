@@ -59,9 +59,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin-top: 100px;
+   
+    margin-top: 70px;
 }
 .log-in-button {
     margin-top: 20px;
@@ -173,4 +172,28 @@
     top: 10px;
     background-color: #eee;
     border: solid 1px rgb(143, 143, 143);
+}
+
+.footer__container {
+    display: flex;
+
+    align-items:center;
+    margin-top: 60px;
+    
+}
+
+.footer-link {
+    text-decoration: None;
+    margin: 40px;
+    color: rgb(65, 65, 65);
+    font-size: 0.8rem;
+}
+
+.party {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
 }

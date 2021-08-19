@@ -7,7 +7,6 @@ import './homepage.css'
 
 const HomePage = () => {
     const user = useSelector(state => state.session.user)
-
     const posts = useSelector(state => Object.values(state.posts))
     const dispatch = useDispatch();
 
@@ -17,6 +16,7 @@ const HomePage = () => {
 
     useEffect(() => {
         dispatch(getAllPosts())
+      
     }, [])
 
     useEffect(() => {
@@ -28,7 +28,6 @@ const HomePage = () => {
 
     return (
         <div className='photo-feed__container'>
-            <h1>Welcome {user.username}!</h1>
             {sortedPosts?.map(post =>
             (<div key={post.id} className='single-post__container'>
                 <div className='icon-username__container'>
