@@ -16,10 +16,8 @@ function User() {
   );
   const posts = useSelector((state) => Object.values(state.posts));
 
-  console.log(isFollowing);
 
   const filteredPost = posts.filter((post) => post.user_id === +userId);
-  console.log(loggedInUser);
   const handleFollow = async () => {
     const response = await fetch(`/api/users/${userId}/follow`);
     const obj = await response.json();
@@ -39,7 +37,7 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
-      // console.log(user)
+    
       setUser(user);
     })();
   }, [userId]);

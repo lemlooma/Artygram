@@ -12,11 +12,7 @@ function Followers() {
   const dispatch = useDispatch();
 
   const allUser = useSelector((state) => state.users);
-  console.log(
-    allUser.users?.map((user) =>
-      user.follow_by.map((followers) => console.log(followers))
-    )
-  );
+ 
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -40,7 +36,7 @@ function Followers() {
                 )}
 
                 <div className="followersDetail">
-                  <NavLink to={`/user/${followBy.id}`}>
+                  <NavLink className="followersDetail" to={`/user/${followBy.id}`}>
                     <div>{followBy.username}</div>
                   </NavLink>
                 </div>

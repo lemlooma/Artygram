@@ -128,15 +128,7 @@ export const loginDemo = () => async (dispatch) => {
  }
 }
 
-// export const getAllFollowing = (id) => async dispatch =>  {
-//   const req = await fetch(`/api/auth/${id}/following`)
-//   console.log(req)
-//   if(req.ok){
-//       const following = await req.json()
-//       console.log(following)
-//       dispatch(getFollowing(following))
-//   }
-// }
+
 
 export default function reducer(state = initialState, action) {
   switch (action.type) {

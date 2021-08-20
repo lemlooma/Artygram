@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllUsers } from "../../store/user";
-
-// import PostForm from '../PostForm';
 import "./following.css";
 
 function Following() {
@@ -35,7 +33,7 @@ function Following() {
                 )}
 
                 <div className="followersDetail">
-                  <NavLink to={`/user/${following.id}`}>
+                  <NavLink className="followersDetail" to={`/user/${following.id}`}>
                     <div>{following.username}</div>
                   </NavLink>
                 </div>

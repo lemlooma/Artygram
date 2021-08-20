@@ -9,7 +9,6 @@ import Particles from "react-particles-js";
 
 const SignUpForm = ({setAuthenticated}) => {
   const [errors, setErrors] = useState([]);
-  console.log(errors)
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');

@@ -58,7 +58,6 @@ export const getAllPosts = () => async dispatch => {
 
 export const updateCaption = (post) => async dispatch => {
     const { id, caption, } = post
-    console.log(caption)
     const res = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },

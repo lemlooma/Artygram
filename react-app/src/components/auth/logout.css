@@ -1,0 +1,10 @@
+#logOutButton {
+    padding-left: 17px;
+    padding-bottom: 15px;
+    font-size: 28px;
+}
+
+#logOutButton:hover {
+    cursor: pointer;
+    color: rgb(249, 95, 167);
+}

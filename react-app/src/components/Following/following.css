@@ -14,13 +14,20 @@
  
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     height: 150px;
+    padding-top: 40px;
+    padding-left: 48%;
    
  
 }
 
 .followersDetail {
-    padding-top: 40px;
-    padding-left: 30px;
+    text-decoration: none;
+    color: black; 
+    font-size: 20px;
+   
 }
+
+
 

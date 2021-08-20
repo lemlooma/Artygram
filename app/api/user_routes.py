@@ -26,7 +26,6 @@ def user(id):
 @login_required
 def following(id):
     user = User.query.get(id)
-    print(user)
     return user.to_dict()
 
 
