@@ -46,3 +46,8 @@
     border: none;
     background-color: white;
 }
+
+.post-username {
+    text-decoration: none;
+    color: black;
+}
