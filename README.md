@@ -1,6 +1,6 @@
 # Artygram
 
-https://github.com/lemlooma/Artygram/wiki
+Wiki: https://github.com/lemlooma/Artygram/wiki
 
 Live Demo: https://artygram.herokuapp.com/
 
