@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { getLoginPosts, likeOnePost } from "../../store/post";
 
 
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Link } from "react-router-dom";
 import { deleteOnePost } from "../../store/post";
 import EditCaption from "../EditCaption";
 import './postdetails.css'
@@ -57,62 +57,92 @@ const PostDetails = () => {
 
 
   return (
-    <div className='photo-feed__container'>
+    <div className="photo-feed__container">
       {post ? (
         <div className="post-detail__container">
           <div class="icon-username__container">
-            <img className='post-icon' src={`${post.user.profile_pic}`} />
-            <span className='post-username'> {post.user.username}</span>
+            <Link to={`/user/${post.user_id}`}>
+              <img
+                className="post-icon"
+                id="post-icon"
+                src={`${post.user?.profile_pic}`}
+              />
+            </Link>
+            <Link className="post-username" to={`/user/${post.user_id}`}>
+              <span> {post.user?.username}</span>
+            </Link>
           </div>
 
           <div>
-            <img className='post-img' src={post.pic_url} alt={`img-${post.id}`} />
+            <img
+              className="post-img"
+              src={post.pic_url}
+              alt={`img-${post.id}`}
+            />
           </div>
 
-          <div className='like-delete__container'>
+          <div className="like-delete__container">
             {post.postlikes.includes(user.id) ? (
-              <div className="div-in-post likebutton" >
-                <i onClick={() => likePostDetail(post)} class="fas liked fa-heart"></i>
+              <div className="div-in-post likebutton">
+                <i
+                  onClick={() => likePostDetail(post)}
+                  class="fas liked fa-heart"
+                ></i>
               </div>
             ) : (
-              <div className="div-in-post likebutton" >
-              
-                <i onClick={() => likePostDetail(post)} className="far unliked fa-heart"></i>
+              <div className="div-in-post likebutton">
+                <i
+                  onClick={() => likePostDetail(post)}
+                  className="far unliked fa-heart"
+                ></i>
               </div>
             )}
-             <div className='delete-post' hidden={user.id === post.user_id ? false : true}>
-            <i onClick={handleDelete} class="far fa-trash-alt"></i>
+            <div
+              className="delete-post"
+              hidden={user.id === post.user_id ? false : true}
+            >
+              <i onClick={handleDelete} class="far fa-trash-alt"></i>
+            </div>
           </div>
-          </div>
 
-          <div className='div-in-post'>likes: {post.likesnum}</div>
+          <div className="div-in-post">likes: {post.likesnum}</div>
 
-          <div className='div-in-post caption-button__container'>
-            <div className='post-caption__container'><strong>{post.user.username}</strong> {post.caption}</div>
-
-            <div className='edit-post' hidden={user.id === post.user_id ? false : true}>
-            <i onClick={() => setShowEditCaption(post.id)} className="far fa-edit"></i>
+          <div className="div-in-post caption-button__container">
+            <div className="post-caption__container">
+              <strong>{post.user.username}</strong> {post.caption}
             </div>
 
+            <div
+              className="edit-post"
+              hidden={user.id === post.user_id ? false : true}
+            >
+              <i
+                onClick={() => setShowEditCaption(post.id)}
+                className="far fa-edit"
+              ></i>
+            </div>
           </div>
 
           {showEditCaption ? edit : ""}
 
           {/* <div className='div-in-post'>comments: {post.commentsnum}</div> */}
 
-          <div className='div-in-post'>{post.timestamp}</div>
+          <div className="div-in-post">{post.timestamp}</div>
 
-          <div className='div-in-post'>
-            <div className='post-comment__div'>
-            <div>comments:</div>
-            <button onClick={handleComment} className='post-comment__button'>post comment</button>
+          <div className="div-in-post">
+            <div className="post-comment__div">
+              <div>comments:</div>
+              <button onClick={handleComment} className="post-comment__button">
+                post comment
+              </button>
             </div>
-          {post.comments.length > 0 ?
-          post.comments.map(comment => <div>{comment.caption}</div>)
-          :
-          <div>Be the first one here!</div> }</div>
+            {post.comments.length > 0 ? (
+              post.comments.map((comment) => <div>{comment.caption}</div>)
+            ) : (
+              <div>Be the first one here!</div>
+            )}
+          </div>
         </div>
-
       ) : null}
     </div>
   );

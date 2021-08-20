@@ -68,7 +68,7 @@ const SignUpForm = ({setAuthenticated}) => {
               name="username"
               placeholder="Username"
               onChange={updateUsername}
-              value={username}
+              required
             ></input>
           </div>
           <div className="input__container">
@@ -79,6 +79,7 @@ const SignUpForm = ({setAuthenticated}) => {
               placeholder="Email"
               onChange={updateEmail}
               value={email}
+              required
             ></input>
           </div>
           <div className="input__container">
