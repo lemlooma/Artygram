@@ -29,6 +29,10 @@
     height: 50px;
 }
 
+.post-img{
+    width: 600px
+}
+
 .liked{
     color: red;
     font-size: 20px;

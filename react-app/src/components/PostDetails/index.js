@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { getLoginPosts,likeOnePost } from "../../store/post";
+import { getLoginPosts, likeOnePost } from "../../store/post";
 
 
 import { useParams, useHistory } from "react-router-dom";
@@ -16,83 +16,103 @@ const PostDetails = () => {
   const history = useHistory();
 
 
-    const posts = useSelector((state) => Object.values(state.posts));
-    const user = useSelector((state) => state.session.user);
-    const [showEditCaption, setShowEditCaption] = useState(null)
+  const posts = useSelector((state) => Object.values(state.posts));
+  const user = useSelector((state) => state.session.user);
+  const [showEditCaption, setShowEditCaption] = useState(null)
 
 
 
-
-
-    useEffect(() => {
-        dispatch(getLoginPosts());
-    }, [dispatch]);
+  useEffect(() => {
+    dispatch(getLoginPosts());
+  }, [dispatch]);
 
 
 
-    const post = posts?.find((post) => post.id === +postId);
+  const post = posts?.find((post) => post.id === +postId);
 
-    const handleDelete = async () => {
-        let swo = await dispatch(deleteOnePost(postId))
-        if (swo) {
-            history.push('/')
-        }
+  const handleDelete = async () => {
+    let swo = await dispatch(deleteOnePost(postId))
+    if (swo) {
+      history.push('/')
     }
+  }
 
-    const likePostDetail = async () => {
-         await dispatch(likeOnePost(post))
+  const likePostDetail = async () => {
+    await dispatch(likeOnePost(post))
 
-        }
-
-
-    let edit = null;
-
-    if (showEditCaption) {
-        edit = (
-            <EditCaption post={post} hideForm={() => setShowEditCaption(null)} />
-        )
-    }
+  }
 
 
+  let edit = null;
+
+  if (showEditCaption) {
+    edit = (
+      <EditCaption post={post} hideForm={() => setShowEditCaption(null)} />
+    )
+  }
+
+  const handleComment = () => {
+    alert('comment feature is comming soon!')
+  }
 
 
   return (
-    <div className="post-detail__container">
+    <div className='photo-feed__container'>
       {post ? (
-        <>
-          <div class="username_container">
-           
-            <img width="50px" src={`${post.user.profile_pic}`} />
-            <span> {post.user.username}</span>
+        <div className="post-detail__container">
+          <div class="icon-username__container">
+            <img className='post-icon' src={`${post.user.profile_pic}`} />
+            <span className='post-username'> {post.user.username}</span>
           </div>
+
           <div>
-            <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
+            <img className='post-img' src={post.pic_url} alt={`img-${post.id}`} />
           </div>
-          <div>
+
+          <div className='like-delete__container'>
             {post.postlikes.includes(user.id) ? (
-              <button className="likebutton" onClick={() => likePostDetail(post)}>
-                <i class="fas liked fa-heart"></i>
-              </button>
+              <div className="div-in-post likebutton" >
+                <i onClick={() => likePostDetail(post)} class="fas liked fa-heart"></i>
+              </div>
             ) : (
-              <button className="likebutton" onClick={() => likePostDetail(post)}>
-                <i className="far unliked fa-heart"></i>
-              </button>
+              <div className="div-in-post likebutton" >
+              
+                <i onClick={() => likePostDetail(post)} className="far unliked fa-heart"></i>
+              </div>
             )}
+             <div className='delete-post' hidden={user.id === post.user_id ? false : true}>
+            <i onClick={handleDelete} class="far fa-trash-alt"></i>
           </div>
-          <div>likes: {post.likesnum}</div>
-          <div>
-            {post.caption}{" "}
-            <button hidden={user.id === post.user_id ? false : true} onClick={() => setShowEditCaption(post.id)}>Edit</button>
+          </div>
+
+          <div className='div-in-post'>likes: {post.likesnum}</div>
+
+          <div className='div-in-post caption-button__container'>
+            <div className='post-caption__container'><strong>{post.user.username}</strong> {post.caption}</div>
+
+            <div className='edit-post' hidden={user.id === post.user_id ? false : true}>
+            <i onClick={() => setShowEditCaption(post.id)} className="far fa-edit"></i>
+            </div>
+
           </div>
 
           {showEditCaption ? edit : ""}
-          <div>comments: {post.commentsnum}</div>
-          <div>{post.timestamp}</div>
-          <div hidden={user.id === post.user_id ? false : true}>
-            <i onClick={handleDelete} class="far fa-trash-alt"></i>
-            
-          </div>
-        </>
+
+          {/* <div className='div-in-post'>comments: {post.commentsnum}</div> */}
+
+          <div className='div-in-post'>{post.timestamp}</div>
+
+          <div className='div-in-post'>
+            <div className='post-comment__div'>
+            <div>comments:</div>
+            <button onClick={handleComment} className='post-comment__button'>post comment</button>
+            </div>
+          {post.comments.length > 0 ?
+          post.comments.map(comment => <div>{comment.caption}</div>)
+          :
+          <div>Be the first one here!</div> }</div>
+        </div>
+
       ) : null}
     </div>
   );

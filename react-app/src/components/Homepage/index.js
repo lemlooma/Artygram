@@ -9,36 +9,52 @@ const HomePage = () => {
     const user = useSelector(state => state.session.user)
     const posts = useSelector(state => Object.values(state.posts))
     const dispatch = useDispatch();
+
     const [getPost, setPost] = useState(false);
-    // const allPosts = posts.sort()
+
     const Ids = user.follows.map(user => user.id)
     Ids.push(user.id)
     const filtered = posts.filter((post) => Ids.includes(post.user_id))
+
     const sortedPosts = filtered.reverse()
+
+
     useEffect(() => {
         dispatch(getAllPosts())
     }, [])
+
     useEffect(() => {
-    if(getPost){
-    dispatch(likeOnePost(getPost))
+        if(getPost){
+            dispatch(likeOnePost(getPost))
             // dispatch(getAllPosts())
         }
-   }, [getPost])
+    }, [getPost])
+
+
+
+
+
     return (
-         <div className='photo-feed__container'>
+        <div className='photo-feed__container'>
             {sortedPosts?.map(post =>
             (<div key={post.id} className='single-post__container'>
                 <div className='icon-username__container'>
+
                     <Link to={`/user/${post.user_id}`}>
                     <img className='post-icon' id='post-icon' src={`${post.user?.profile_pic}`} />
                     </Link>
                     <Link className='post-username'to={`/user/${post.user_id}`}>
                     <span> {post.user?.username}</span>
                     </Link>
+
+                    <img className='post-icon' id='post-icon' src={`${post.user?.profile_pic}`} />
+                    <span className='post-username'> {post.user?.username}</span>
+
                 </div>
                 <div>
                     <Link to={`post/${post.id}`}>
-                    <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
+
+                        <img className='post-img' src={post.pic_url} alt={`img-${post.id}`} />
                     </Link>
                 </div>
                 <div>
