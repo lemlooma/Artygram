@@ -67,19 +67,23 @@ function User() {
             ))}
           </div>
           <div className="postFollowerFollowing">
+          <div className='post_followers_following'>
             <div className="user-posts__container">
-              {filteredPost.length} posts
+           
+              <strong>{filteredPost.length}</strong> posts
             </div>
             <div>
               <NavLink to={`/user/${user.id}/followers`}>
-                {user.follow_by?.length} followers
+                <strong>{user.follow_by?.length} </strong>followers
               </NavLink>
             </div>
             <div>
               <NavLink to={`/user/${user.id}/following`}>
-                {user.follows?.length} following
+                <strong>{user.follows?.length}</strong> following
               </NavLink>
+              </div>
             </div>
+       
           </div>
           <div>{user.bio}</div>
         </div>

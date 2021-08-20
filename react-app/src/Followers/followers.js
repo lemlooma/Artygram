@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import {getAllUsers } from "../../store/user";
+import { getAllUsers } from "../store/user";
 
 // import PostForm from '../PostForm';
-import "./following.css";
+import "./followers.css";
 
-function Following() {
+function Followers() {
   const { userId } = useParams();
-
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const allUser = useSelector((state) => state.users);
+  console.log(allUser.users?.map(user=>user.follow_by.map((followers)=> console.log(followers))))
+
   useEffect(() => {
     dispatch(getAllUsers());
   }, []);
@@ -20,14 +21,14 @@ function Following() {
   return (
     <div className="followingPageBody">
         
-      {allUser.users?.map(user=>user.follows.map((following) => +userId === user.id? (
+        {allUser.users?.map(user=>user.follow_by.map((followBy) => +userId === user.id? (
         <>
          <div className='followersDetailContainer'>
             
               {allUser.users?.map((user) =>
-                user.id === following.id ? (
+                user.id === followBy.id ? (
                   <div>
-                       <NavLink to={`/user/${following.id}`}>
+                       <NavLink to={`/user/${followBy.id}`}>
                     <img className="profilePic" src={user.profile_pic} />
                     </NavLink>
                   </div>
@@ -35,8 +36,8 @@ function Following() {
               )}
            
             <div className='followersDetail'>
-            <NavLink to={`/user/${following.id}`}>
-            <div>{following.username}</div>
+            <NavLink to={`/user/${followBy.id}`}>
+            <div>{followBy.username}</div>
           </NavLink>
           </div>
           </div>
@@ -47,4 +48,4 @@ function Following() {
   );
 }
 
-export default Following;
+export default Followers;

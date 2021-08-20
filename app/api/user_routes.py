@@ -1,15 +1,23 @@
 from flask import Blueprint, jsonify
+<<<<<<< HEAD
 from app.models import User
 from flask_login import current_user, login_required
 from ..models.db import db
+=======
+from flask_login import current_user, login_required
+from app.models import User
+from ..models.db import db
+
+>>>>>>> main
 
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
+@user_routes.route('/all')
 @login_required
 def users():
     users = User.query.all()
+    print(users)
     return {'users': [user.to_dict() for user in users]}
 
 
@@ -29,6 +37,12 @@ def following(id):
     return user.to_dict()
 
 
+@user_routes.route('/<int:id>/followers')
+@login_required
+def followers(id):
+    user = User.query.get(id)
+    return user.to_dict()
+
 @user_routes.route('/<int:id>/follow')
 @login_required
 def likeOnPost(id):
@@ -43,12 +57,12 @@ def likeOnPost(id):
     allUsersId = [user.id for user in loggedUser.follows]
 
     if otherUser.id in allUsersId:
-        #have to remove the whole user object.
+        # have to remove the whole user object.
         loggedUser.follows.remove(otherUser)
     else:
         # this has to add the user object. instead of just the user.id
-       loggedUser.follows.append(otherUser)
+        loggedUser.follows.append(otherUser)
 
     db.session.commit()
     # print('this is the post!!!!!!!!!!!', post.postLikes)
-    return {'loggedUser':loggedUser.to_dict(), 'otherUser':otherUser.to_dict()}, 200
+    return {'loggedUser': loggedUser.to_dict(), 'otherUser': otherUser.to_dict()}

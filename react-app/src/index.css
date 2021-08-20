@@ -1,4 +1,6 @@
 /* TODO Add site wide styles */
+
+
 body, html{
   position: relative;
   min-height: 100vh;
@@ -7,20 +9,7 @@ body, html{
   background-repeat: no-repeat;
   background-attachment: fixed;
   margin: auto
+
 }
 
-/* body, html {
-  align-content: center;
-  padding-left:165px;
-  width: 60%;
-  min-width: 500px;
-  align-items: center;
-  display: flex;
-  position: relative;
-  margin: auto;
-} */
-/* #root{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-} */
+
