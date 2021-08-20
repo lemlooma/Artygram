@@ -1,3 +1,4 @@
+
 .userPageBody {
     padding-top: 100px;
   }
@@ -21,7 +22,7 @@
     flex-direction: row;
   }
   .userPhotoFeed {
-    width: 2000px;
+    width: 2400px;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -126,6 +127,5 @@
   .addNewPost {
       margin-left: 300px;
   }
-  
   
   
