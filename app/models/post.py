@@ -12,7 +12,7 @@ class Post(db.Model):
     caption = db.Column(db.String(100), nullable=False)
     pic_url = db.Column(db.String(255), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-    timestamp = db.Column(db.DateTime, default=datetime.now)
+    timestamp = db.Column(db.DateTime, default=datetime.now, )
 
     users = db.relationship('User', back_populates="posts")
 

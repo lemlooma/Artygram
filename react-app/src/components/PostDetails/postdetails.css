@@ -1,11 +1,6 @@
-.post-detail__container{
-    display: flex;
-    flex-direction: column;
-    margin-top: 25px;
-    align-items: center;
-}
 
-.single-post__container{
+
+.post-detail__container{
     display: flex;
     flex-direction: column;
     margin-bottom: 25px;
@@ -43,6 +38,53 @@
 }
 
 .likebutton{
-    border: none;
+    border: 0px solid white;
     background-color: white;
+}
+
+.div-in-post{
+    padding: 10px;
+}
+
+.post-comment__div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-comment__button{
+    background-color: white;
+    border: 0px;
+    background-color: #0c8fe7;
+    color: #f5f7f9;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 8px;
+}
+
+.like-delete__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.caption-button__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.edit-post{
+    font-size: 20px;
+}
+.edit-post:hover{
+    color: green;
+}
+.delete-post{
+    padding-left: 10px;
+    font-size: 20px;
+}
+.delete-post:hover{
+    color:blue;
 }
