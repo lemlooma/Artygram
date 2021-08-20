@@ -14,6 +14,7 @@
 .postFollowerFollowing {
     display: flex;
     flex-direction: row;
+    
 }
 .userPhotoFeed {
 
@@ -26,3 +27,19 @@
     width: 300px;
     height: 300px;
 }
+
+.post_followers_following {
+    display: flex;
+    flex-direction: row;
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 500px;
+}
+
+a:link {
+    color: black;
+    padding-right: 20px;
+    padding-left: 20px;
+    text-decoration: none;
+}
+

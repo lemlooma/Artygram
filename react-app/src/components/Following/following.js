@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
-import { getAllFollowing, getAllUsers } from "../../store/user";
+import {getAllUsers } from "../../store/user";
 
 // import PostForm from '../PostForm';
 import "./following.css";
 
 function Following() {
   const { userId } = useParams();
+
   const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const allUser = useSelector((state) => state.users);
-
   useEffect(() => {
     dispatch(getAllUsers());
   }, []);
@@ -20,7 +20,7 @@ function Following() {
   return (
     <div className="followingPageBody">
         
-      {user.follows.map((following) => (
+      {allUser.users?.map(user=>user.follows.map((following) => +userId === user.id? (
         <>
          <div className='followersDetailContainer'>
             
@@ -41,7 +41,7 @@ function Following() {
           </div>
           </div>
         </>
-      ))}
+      ): null ))}
       
     </div>
   );
