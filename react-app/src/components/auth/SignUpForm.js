@@ -9,6 +9,7 @@ import Particles from "react-particles-js";
 
 const SignUpForm = ({setAuthenticated}) => {
   const [errors, setErrors] = useState([]);
+  console.log(errors)
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -23,6 +24,8 @@ const SignUpForm = ({setAuthenticated}) => {
       if (data) {
         setErrors(data)
       }
+    }else{
+      setErrors(["Passwords do no match!"])
     }
   };
 
@@ -52,6 +55,13 @@ const SignUpForm = ({setAuthenticated}) => {
         <i className="fab fa-instagram fa-2x"></i>
         <h1 className="form-title">Sign up</h1>
         <form className="login-form" onSubmit={onSignUp}>
+          <div>
+            <div className="errors">
+              {errors.map((error) => (
+                <div>{error}</div>
+              ))}
+            </div>
+          </div>
           <div className="input__container">
             <input
               className="input"

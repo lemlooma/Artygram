@@ -127,3 +127,10 @@
     min-height: 100%;
     z-index: -1;
 }
+
+.errors{
+    
+    padding-bottom: 10px;
+    color:rgb(255, 93, 93);
+    font-weight: bold;
+}

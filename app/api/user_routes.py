@@ -36,6 +36,7 @@ def followers(id):
     user = User.query.get(id)
     return user.to_dict()
 
+
 @user_routes.route('/<int:id>/follow')
 @login_required
 def likeOnPost(id):

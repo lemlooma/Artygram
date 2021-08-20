@@ -22,11 +22,14 @@
     flex-direction: row;
   }
   .userPhotoFeed {
-    width: 2400px;
+    padding-left: 26.5%;
+    width: 60%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
+    flex-basis: 33.333333%;
+    position: relative;
   }
   
   .borderContainer {
@@ -83,7 +86,7 @@
   
   .userName {
     font-size: xx-large;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-family:Arial, Helvetica, sans-serif
   }
   
@@ -91,7 +94,7 @@
     width: 500px;
     overflow-wrap: break-word;
     font-size: large;
-    margin-top: 50px;
+    margin-top: 40px;
     font-family:Arial, Helvetica, sans-serif;
   }
   
@@ -122,10 +125,11 @@
   .addPic{
       width: 150px;
       height: 100px;
+      
   }
   
   .addNewPost {
-      margin-left: 300px;
+      margin-left: 100%;
   }
   
   

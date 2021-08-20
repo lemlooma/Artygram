@@ -65,6 +65,7 @@ def demo_login():
     login_user(demo_user)
     return demo_user.to_dict() ## {'id': 2, 'username': 'Demo', 'email': 'demo@aa.io', 'bio': 'I started painting as a hobby when I was little. I didn’t know I had any talent. I believe talent is just a pursued interest. Anybody can do what I do.', 'profile_pic': 'https://imgur.com/ckiJh7g'}
 
+
 @auth_routes.route('/signup', methods=['POST'])
 def sign_up():
     """
@@ -84,10 +85,3 @@ def sign_up():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
-
-@auth_routes.route('/unauthorized')
-def unauthorized():
-    """
-    Returns unauthorized JSON when flask-login authentication fails
-    """
-    return {'errors': ['Unauthorized']}, 401
