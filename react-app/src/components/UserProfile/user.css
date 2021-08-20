@@ -1,45 +1,136 @@
+
 .userPageBody {
     padding-top: 100px;
-}
-.userDetails {
+  }
+  .userDetails {
+    padding-right: 150px;
     display: flex;
     flex-direction: row;
-}
-.userProfilePic {
+    justify-content: center;
+  
+  }
+  .userProfilePic {
     border-radius: 50%;
-    width: 100px;
-    height: 100px;
-}
-
-.postFollowerFollowing {
-    display: flex;
-    flex-direction: row;
+    width: 200px;
+    height: 200px;
+    margin-right: 100px;
     
-}
-.userPhotoFeed {
-
+  }
+  
+  .postFollowerFollowing {
     display: flex;
     flex-direction: row;
-   
-}
-
-.userPostPhoto {
-    width: 300px;
-    height: 300px;
-}
-
-.post_followers_following {
+  }
+  .userPhotoFeed {
+    padding-left: 26.5%;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-basis: 33.333333%;
+    position: relative;
+  }
+  
+  .borderContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+    margin-top:  40px;
+  }
+  .border {
+    width: 1150px;
+    border-top: 1px solid rgba(128, 128, 128, 0.384);
+  
+  }
+  .userPostPhoto {
+    width: 350px;
+    height: 350px;
+    padding: 15px;
+  }
+  
+  .post_followers_following {
     display: flex;
     flex-direction: row;
     padding-right: 20px;
     padding-left: 20px;
     width: 500px;
-}
 
-/* a:link {
-    color: black;
-    padding-right: 20px;
-    padding-left: 20px;
-    text-decoration: none;
-} */
-
+  }
+  .numberPost {
+  
+      font-size: 20px;
+  }
+  
+  .followers {
+      color: black;
+      padding-right: 20px;
+      padding-left: 20px;
+      text-decoration: none;
+      font-size: 20px;
+  }
+  
+  .following {
+      color: black;
+      padding-right: 20px;
+      padding-left: 20px;
+      text-decoration: none;
+      font-size: 20px;
+  }
+  /* 
+  a:link {
+      color: black;
+      padding-right: 20px;
+      padding-left: 20px;
+      text-decoration: none;
+  } */
+  
+  .userName {
+    font-size: xx-large;
+    margin-bottom: 40px;
+    font-family:Arial, Helvetica, sans-serif
+  }
+  
+  .userBio {
+    width: 500px;
+    overflow-wrap: break-word;
+    font-size: large;
+    margin-top: 40px;
+    font-family:Arial, Helvetica, sans-serif;
+  }
+  
+  .post_followers_following {
+      /* width: 300px; */
+      padding-left: 0px;
+      display: flex;
+      justify-content: space-between;
+  }
+  
+  .userNameAndButton {
+      display: flex;
+      flex-direction: row;
+  }
+  
+  .button {
+      margin-top: 0px;
+      margin-left: 30px;
+      background-color: white;
+      text-align: center;
+      font-size: 17px;
+      height: 35px;
+      width: 90px;
+      border-color: rgba(199, 197, 197, 0.384);
+      font-family:Arial, Helvetica, sans-serif;
+  }
+  
+  .addPic{
+      width: 150px;
+      height: 100px;
+      
+  }
+  
+  .addNewPost {
+      margin-left: 100%;
+  }
+  
+  
