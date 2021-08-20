@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, useParams } from 'react-router-dom';
 import { getAllPosts } from '../../store/post';
-import PostForm from '../PostForm';
+// import { getAllUsers } from '../../store/user';
+// import PostForm from '../PostForm';
 import './user.css'
 
 function User() {
@@ -10,32 +11,61 @@ function User() {
   const { userId } = useParams();
   const dispatch = useDispatch()
 
+  const [user, setUser] = useState([]);
 
 
-  const user = useSelector((state) => state.session.user)
+  const loggedInUser = useSelector((state) => state.session.user)
+
   const posts = useSelector((state) => Object.values(state.posts))
-  const filteredPost = posts.filter((post) => post.user_id === user.id)
 
+  const filteredPost = posts.filter((post) => post.user_id === +userId)
 
 
   useEffect(() => {
     dispatch(getAllPosts())
   }, [])
 
-  // useEffect(() => {
-  //   if (!userId) {
-  //     return;
-  //   }
-  //   (async () => {
-  //     const response = await fetch(`/api/users/${userId}`);
-  //     const user = await response.json();
-  //     setUser(user);
-  //   })();
-  // }, [userId]);
+  // useEffect(()=>{
+  //   dispatch(getAllUsers())
+  // })
 
-  // if (!user) {
-  //   return null;
-  // }
+
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const response = await fetch('/api/users/');
+  //     const responseData = await response.json();
+  //     setUsers(responseData.users);
+
+  //   }
+  //   fetchData();
+
+  //   const selectedUser = users.filter((user)=>{
+
+  //     return userId === user.id
+
+  //     })
+  //     console.log(selectedUser)
+  // }, []);
+
+
+
+  useEffect(() => {
+    if (!userId) {
+      return;
+    }
+    (async () => {
+      const response = await fetch(`/api/users/${userId}`);
+      const user = await response.json();
+      setUser(user);
+    })();
+  }, [userId]);
+
+
+  if (!user) {
+    return null;
+  }
+
+
 
   return (
     <div className='userPageBody'>
@@ -52,11 +82,13 @@ function User() {
               {filteredPost.length} posts
             </div>
             <div>
-              ({user.follow_by.length}) followers
+            <NavLink to={`/user/${user.id}/followers`}>
+              {user.follow_by?.length} followers
+              </NavLink>
             </div>
             <div>
               <NavLink to={`/user/${user.id}/following`}>
-                ({user.follows.length}) following
+                {user.follows?.length} following
               </NavLink>
             </div>
           </div>

@@ -4,6 +4,12 @@ const DELETE_POST = 'post/DELETE_POST'
 const CREATE_POST = 'posts/CREATE_POST'
 const EDIT_CAPTION = 'posts/EDIT_CAPTION'
 const LIKE_POST = 'posts/LIKE_POST'
+const ALL_POSTS = 'posts/ALL_POSTS'
+
+const allPosts = (posts) => ({
+    type: ALL_POSTS,
+    posts
+})
 
 const getPosts = (posts) => ({
     type: GET_POSTS,
@@ -31,7 +37,7 @@ const likePost = (post) => ({
 });
 
 
-export const getAllPosts = () => async dispatch => {
+export const getLoginPosts = () => async dispatch => {
     const req = await fetch(`/api/posts/`);
     if (req.ok) {
         const posts = await req.json();
@@ -39,6 +45,16 @@ export const getAllPosts = () => async dispatch => {
     }
     return req
 }
+
+export const getAllPosts = () => async dispatch => {
+    const response = await fetch('/api/posts/all');
+    if(response.ok){
+        const posts = await response.json();
+        dispatch(allPosts(posts))
+    }
+    return response
+}
+
 
 export const updateCaption = (post) => async dispatch => {
     const { id, caption, } = post
@@ -59,6 +75,7 @@ export const deleteOnePost = (id) => async dispatch => {
     const res = await fetch(`/api/posts/${id}`, {
         method: 'DELETE'
     })
+
 
     if (res.ok) {
         const deleted = await res.json()
@@ -101,8 +118,8 @@ export const createPost = (caption, pic_url) => async dispatch => {
 //         dispatch(likePost(res))
 //         return res
 //      }
-     
-    
+
+
 //    };
 
 export const likeOnePost = (post) => async dispatch => {
@@ -129,6 +146,10 @@ export default function posts(state = initialState, action) {
 
             return { ...state, ...action.posts }
         }
+        case ALL_POSTS: {
+            return {...state, ...action.posts}
+        }
+
         case DELETE_POST: {
             let afterState = { ...state }
 

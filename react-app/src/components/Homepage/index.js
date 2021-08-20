@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
-import { getAllPosts, likeOnePost } from "../../store/post"
+import { getAllPosts, getLoginPosts, likeOnePost } from "../../store/post"
 import './homepage.css'
 
 
@@ -12,11 +12,15 @@ const HomePage = () => {
 
     const [getPost, setPost] = useState(false);
     // const allPosts = posts.sort()
-    const sortedPosts = posts.reverse()
+    const Ids = user.follows.map(user => user.id)
+    Ids.push(user.id)
+    const filtered = posts.filter((post) => Ids.includes(post.user_id))
+
+    const sortedPosts = filtered.reverse()
+
 
     useEffect(() => {
         dispatch(getAllPosts())
-      
     }, [])
 
     useEffect(() => {
@@ -25,6 +29,10 @@ const HomePage = () => {
             // dispatch(getAllPosts())
         }
     }, [getPost])
+
+
+
+
 
     return (
         <div className='photo-feed__container'>
@@ -36,6 +44,7 @@ const HomePage = () => {
                 </div>
                 <div>
                     <Link to={`post/${post.id}`}>
+
                         <img width="600px" src={post.pic_url} alt={`img-${post.id}`} />
                     </Link>
                 </div>
