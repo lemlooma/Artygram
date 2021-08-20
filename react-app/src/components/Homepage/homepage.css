@@ -1,7 +1,8 @@
 .photo-feed__container{
     display: flex;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 25px;
+    align-items: center;
 }
 
 .single-post__container{
@@ -9,6 +10,7 @@
     flex-direction: column;
     margin-bottom: 25px;
     padding-bottom: 15px;
+    width: 600px;
     box-sizing: border-box;
     border: 1px solid #dbdbdb;
 }

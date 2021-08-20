@@ -1,3 +1,22 @@
+.entire__navabar{
+  position: fixed;
+  top:0;
+  left:0;
+  width:100%;
+}
+
+.navbar__container{
+  background-color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.384);
+  height: 70px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  top: 0px;
+  width: 100%;
+
+}
+
 .artygram_logo {
 width: 150px;
 margin-right: 10px;
@@ -8,28 +27,14 @@ margin-right: 10px;
    margin-right: 10px;
 }
 
-.navbar__container{
-   display: flex;
-   align-items: center;
-   height: 70px;
-   box-sizing: border-box;
-   border-bottom: 1px solid rgba(128, 128, 128, 0.384);
-   width: 603px;
-   justify-content: space-between;
-   z-index: 10;
-   position: fixed;
-   background-color: white;
-}
-
-
 .right-navbar{
-   display: flex;
-   align-items: center;
-
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .navbarProPic{
    width: 26px;
    border-radius: 50% ;
-
+  height: 28px;
 }
