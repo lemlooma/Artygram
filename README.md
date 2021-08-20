@@ -14,8 +14,9 @@ Artygram's backend is built using Flask and frontend is built using React-Redux
 
 ## Features 
 
-- Sign up, login and demoUser 
+- Signup, Login and Demo a user 
 - Post Image/Edit Image/Delete Image 
-- Like/Unlike Photos
-- Follow/Unfollow Photos 
+- Like/Unlike Posts
+- Follow/Unfollow Users 
 - Photo Feed
+- User Profiles
