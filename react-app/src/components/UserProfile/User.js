@@ -7,13 +7,9 @@ import { getAllPosts } from '../../store/post';
 import './user.css'
 
 function User() {
-  // const [user, setUser] = useState({});
   const { userId } = useParams();
   const dispatch = useDispatch()
-
   const [user, setUser] = useState({});
-
-
   const loggedInUser = useSelector((state) => state.session.user)
   const [isFollowing, setIsFollowing] = useState(
     loggedInUser.follows.map((u) => +u.id).includes(+userId)
@@ -29,35 +25,12 @@ function User() {
     const obj = await response.json();
     setUser({...obj.otherUser})
     setIsFollowing(!isFollowing)
-  
 }
   useEffect(() => {
     dispatch(getAllPosts())
   }, [])
 
-  // useEffect(()=>{
-  //   dispatch(getAllUsers())
-  // })
-
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     const response = await fetch('/api/users/');
-  //     const responseData = await response.json();
-  //     setUsers(responseData.users);
-
-  //   }
-  //   fetchData();
-
-  //   const selectedUser = users.filter((user)=>{
-
-  //     return userId === user.id
-
-  //     })
-  //     console.log(selectedUser)
-  // }, []);
-
-
+ 
 
   useEffect(() => {
     if (!userId) {
@@ -66,7 +39,7 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
-      console.log(user)
+      // console.log(user)
       setUser(user);
     })();
   }, [userId]);
