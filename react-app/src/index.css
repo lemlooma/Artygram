@@ -19,3 +19,8 @@ body, html{
   position: relative;
   margin: auto;
 } */
+/* #root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+} */

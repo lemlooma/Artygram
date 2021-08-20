@@ -177,10 +177,12 @@
 
 .footer__container {
     display: flex;
-
     align-items:center;
-    margin-top: 60px;
 
+    position: fixed;
+    left: 30%;
+    right: 30%;
+    bottom: 0px;
 }
 
 .footer-link {
