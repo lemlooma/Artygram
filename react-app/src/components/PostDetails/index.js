@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllPosts, likeOnePost } from "../../store/post";
+
+import { getLoginPosts,likeOnePost } from "../../store/post";
+
 
 import { useParams, useHistory } from "react-router-dom";
 import { deleteOnePost } from "../../store/post";
@@ -12,42 +14,44 @@ const PostDetails = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const posts = useSelector((state) => Object.values(state.posts));
-  const user = useSelector((state) => state.session.user);
-  const [showEditCaption, setShowEditCaption] = useState(null)
+
+    const posts = useSelector((state) => Object.values(state.posts));
+    const user = useSelector((state) => state.session.user);
+    const [showEditCaption, setShowEditCaption] = useState(null)
 
 
 
-  // const allPost = posts.Posts;
-  // console.log(allPost);
-
-  useEffect(() => {
-    dispatch(getAllPosts());
-  }, [dispatch]);
 
 
-  const post = posts?.find((post) => post.id === +postId);
+    useEffect(() => {
+        dispatch(getLoginPosts());
+    }, [dispatch]);
 
-  const handleDelete = async () => {
-    let swo = await dispatch(deleteOnePost(postId))
-    if (swo) {
-      history.push('/')
+
+
+    const post = posts?.find((post) => post.id === +postId);
+
+    const handleDelete = async () => {
+        let swo = await dispatch(deleteOnePost(postId))
+        if (swo) {
+            history.push('/')
+        }
     }
-  }
 
-  const likePostDetail = async () => {
-    await dispatch(likeOnePost(post))
+    const likePostDetail = async () => {
+         await dispatch(likeOnePost(post))
 
-  }
+        }
 
 
-  let edit = null;
+    let edit = null;
 
-  if (showEditCaption) {
-    edit = (
-      <EditCaption post={post} hideForm={() => setShowEditCaption(null)} />
-    )
-  }
+    if (showEditCaption) {
+        edit = (
+            <EditCaption post={post} hideForm={() => setShowEditCaption(null)} />
+        )
+    }
+
 
 
 
