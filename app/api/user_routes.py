@@ -6,10 +6,11 @@ from app.models import User
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
+@user_routes.route('/all')
 @login_required
 def users():
     users = User.query.all()
+    print(users)
     return {'users': [user.to_dict() for user in users]}
 
 
