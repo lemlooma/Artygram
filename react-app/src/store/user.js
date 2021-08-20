@@ -7,10 +7,10 @@ const getFollowing = (user) => ({
     payload: user
   })
 
-// const getUser = (users) => ({
-//   type: GET_USERS,
-//   payload: users
-// })
+const getUser = (users) => ({
+  type: GET_USERS,
+  payload: users
+})
 
   export const getAllFollowing = (id) => async dispatch =>  {
     const response = await fetch(`/api/users/${id}/following`)
