@@ -19,11 +19,13 @@ def get_posts():
     posts = Post.query.filter(Post.user_id.in_(
         following_ids)).order_by(Post.timestamp.desc()).all()
 
-    users = User.query.filter(User.id.in_(following_ids)).all()
-
     return {post.id: post.to_dict() for post in posts}
     # return {"Posts": {post.id: post.to_dict() for post in posts}}
 
+@post_routes.route('/all')
+def get_all_posts():
+    posts = Post.query.all()
+    return {post.id: post.to_dict() for post in posts}
 
 @post_routes.route('/new', methods=['GET', 'POST'])
 @login_required

@@ -17,15 +17,12 @@ def users():
 @login_required
 def user(id):
     user = User.query.get(id)
-    print('XXXXXXXXXXXXX', user)
+
     return user.to_dict()
 
 
 @user_routes.route('/<int:id>/following')
 @login_required
 def following(id):
-    print(id)
     user = User.query.get(id)
     return user.to_dict()
-
-
