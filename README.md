@@ -1,6 +1,6 @@
 # artygram
 
-Artygram is a instrgram clone targeted towards artist. On Artygram you can browse artist profile pages and vew thier work 
+Artygram is an Instrgram clone targeted towards artist. On Artygram you can browse artist profile pages and vew thier work 
 
 ## Welcome View 
 
