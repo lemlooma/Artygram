@@ -4,7 +4,7 @@ Artygram is a instrgram clone targeted towards artist. On Artygram you can brows
 
 ## Welcome View 
 
-![welcome]() 
+![welcome](artygram.png) 
 
 ## Home View
 
