@@ -1,12 +1,13 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required,current_user
 from app.models import User
+from ..models.db import db
 
 
 user_routes = Blueprint('users', __name__)
 
 
-@user_routes.route('/')
+@user_routes.route('/all')
 @login_required
 def users():
     users = User.query.all()
