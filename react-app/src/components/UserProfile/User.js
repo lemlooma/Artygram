@@ -31,7 +31,6 @@ function User() {
   }, [])
 
  
-
   useEffect(() => {
     if (!userId) {
       return;
