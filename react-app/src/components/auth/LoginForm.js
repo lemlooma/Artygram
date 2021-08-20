@@ -43,10 +43,11 @@ const LoginForm = () => {
           <div>
             <div className="errors">
             {errors.map((error) => (
-              <div>{error}</div>
+              <div >{error}</div>
             ))}
+            </div>
           </div>
-          </div>
+        
           <div className="input__container">
             <input
               className="input"

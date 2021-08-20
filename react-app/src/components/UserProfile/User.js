@@ -1,34 +1,34 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, useParams } from 'react-router-dom';
-import { getAllPosts } from '../../store/post';
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useParams } from "react-router-dom";
+import { getAllPosts } from "../../store/post";
 // import { getAllUsers } from '../../store/user';
 // import PostForm from '../PostForm';
-import './user.css'
+import "./user.css";
 
 function User() {
   const { userId } = useParams();
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [user, setUser] = useState({});
-  const loggedInUser = useSelector((state) => state.session.user)
+  const loggedInUser = useSelector((state) => state.session.user);
   const [isFollowing, setIsFollowing] = useState(
     loggedInUser.follows.map((u) => +u.id).includes(+userId)
   );
-  const posts = useSelector((state) => Object.values(state.posts))
+  const posts = useSelector((state) => Object.values(state.posts));
 
-  console.log(isFollowing)
+  console.log(isFollowing);
 
-  const filteredPost = posts.filter((post) => post.user_id === +userId)
-    console.log(loggedInUser)
-    const handleFollow = async() => {
+  const filteredPost = posts.filter((post) => post.user_id === +userId);
+  console.log(loggedInUser);
+  const handleFollow = async () => {
     const response = await fetch(`/api/users/${userId}/follow`);
     const obj = await response.json();
-    setUser({...obj.otherUser})
-    setIsFollowing(!isFollowing)
-}
+    setUser({ ...obj.otherUser });
+    setIsFollowing(!isFollowing);
+  };
   useEffect(() => {
-    dispatch(getAllPosts())
-  }, [])
+    dispatch(getAllPosts());
+  }, []);
 
   const addpic = "https://i.imgur.com/3yiJpcr.png";
 
@@ -44,12 +44,9 @@ function User() {
     })();
   }, [userId]);
 
-
   if (!user) {
     return null;
   }
-
-
 
   return (
     <div className="userPageBody">
@@ -86,7 +83,6 @@ function User() {
               </NavLink>
               </div>
             </div>
-       
           </div>
           <div className='userBio'>{user.bio}</div>
         </div>

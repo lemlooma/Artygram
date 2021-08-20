@@ -12,7 +12,11 @@ function Followers() {
   const dispatch = useDispatch();
 
   const allUser = useSelector((state) => state.users);
-  console.log(allUser.users?.map(user=>user.follow_by.map((followers)=> console.log(followers))))
+  console.log(
+    allUser.users?.map((user) =>
+      user.follow_by.map((followers) => console.log(followers))
+    )
+  );
 
   useEffect(() => {
     dispatch(getAllUsers());
@@ -20,30 +24,31 @@ function Followers() {
 
   return (
     <div className="followingPageBody">
-        
-        {allUser.users?.map(user=>user.follow_by.map((followBy) => +userId === user.id? (
-        <>
-         <div className='followersDetailContainer'>
-            
-              {allUser.users?.map((user) =>
-                user.id === followBy.id ? (
-                  <div>
-                       <NavLink to={`/user/${followBy.id}`}>
-                    <img className="profilePic" src={user.profile_pic} />
-                    </NavLink>
-                  </div>
-                ) : null
-              )}
-           
-            <div className='followersDetail'>
-            <NavLink to={`/user/${followBy.id}`}>
-            <div>{followBy.username}</div>
-          </NavLink>
-          </div>
-          </div>
-        </>
-      ): null ))}
-      
+      {allUser.users?.map((user) =>
+        user.follow_by.map((followBy) =>
+          +userId === user.id ? (
+            <>
+              <div className="followersDetailContainer">
+                {allUser.users?.map((user) =>
+                  user.id === followBy.id ? (
+                    <div>
+                      <NavLink to={`/user/${followBy.id}`}>
+                        <img className="profilePic" src={user.profile_pic} />
+                      </NavLink>
+                    </div>
+                  ) : null
+                )}
+
+                <div className="followersDetail">
+                  <NavLink to={`/user/${followBy.id}`}>
+                    <div>{followBy.username}</div>
+                  </NavLink>
+                </div>
+              </div>
+            </>
+          ) : null
+        )
+      )}
     </div>
   );
 }
