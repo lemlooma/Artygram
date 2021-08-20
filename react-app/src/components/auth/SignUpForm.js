@@ -52,6 +52,13 @@ const SignUpForm = ({setAuthenticated}) => {
         <i className="fab fa-instagram fa-2x"></i>
         <h1 className="form-title">Sign up</h1>
         <form className="login-form" onSubmit={onSignUp}>
+          {/* <div>
+            <div className="errors">
+              {errors.map((error) => (
+                <div>{error}</div>
+              ))}
+            </div>
+          </div> */}
           <div className="input__container">
             <input
               className="input"

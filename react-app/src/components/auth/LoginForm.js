@@ -41,9 +41,11 @@ const LoginForm = () => {
         <h1 className="form-title">Artygram</h1>
         <form className="login-form" onSubmit={onLogin}>
           <div>
+            <div className="errors">
             {errors.map((error) => (
-              <div>{error}</div>
+              <div >{error}</div>
             ))}
+            </div>
           </div>
           <div className="input__container">
             <input

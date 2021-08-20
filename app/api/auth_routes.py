@@ -45,6 +45,26 @@ def login():
         return user.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
+@auth_routes.route('/signup', methods=['POST'])
+def sign_up():
+    """
+    Creates a new user and logs them in
+    """
+    form = SignUpForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
+    if form.validate_on_submit():
+        user = User(
+            username=form.data['username'],
+            email=form.data['email'],
+            password=form.data['password']
+        )
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        return user.to_dict()
+    return {'errors': validation_errors_to_error_messages(form.errors)}
+
+
 
 @auth_routes.route('/logout')
 def logout():
@@ -64,25 +84,6 @@ def demo_login():
     demo_user = User.query.filter(User.email == 'demo@aa.io').first()
     login_user(demo_user)
     return demo_user.to_dict() ## {'id': 2, 'username': 'Demo', 'email': 'demo@aa.io', 'bio': 'I started painting as a hobby when I was little. I didn’t know I had any talent. I believe talent is just a pursued interest. Anybody can do what I do.', 'profile_pic': 'https://imgur.com/ckiJh7g'}
-
-@auth_routes.route('/signup', methods=['POST'])
-def sign_up():
-    """
-    Creates a new user and logs them in
-    """
-    form = SignUpForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        user = User(
-            username=form.data['username'],
-            email=form.data['email'],
-            password=form.data['password']
-        )
-        db.session.add(user)
-        db.session.commit()
-        login_user(user)
-        return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route('/unauthorized')
