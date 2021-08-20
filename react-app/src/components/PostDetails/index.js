@@ -7,6 +7,7 @@ import { getLoginPosts,likeOnePost } from "../../store/post";
 import { useParams, useHistory } from "react-router-dom";
 import { deleteOnePost } from "../../store/post";
 import EditCaption from "../EditCaption";
+import './postdetails.css'
 
 const PostDetails = () => {
   const { postId } = useParams();
@@ -59,7 +60,8 @@ const PostDetails = () => {
     <div className="post-detail__container">
       {post ? (
         <>
-          <div>
+          <div class="username_container">
+           
             <img width="50px" src={`${post.user.profile_pic}`} />
             <span> {post.user.username}</span>
           </div>
@@ -88,6 +90,7 @@ const PostDetails = () => {
           <div>{post.timestamp}</div>
           <div hidden={user.id === post.user_id ? false : true}>
             <i onClick={handleDelete} class="far fa-trash-alt"></i>
+            
           </div>
         </>
       ) : null}
