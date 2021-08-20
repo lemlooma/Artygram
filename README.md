@@ -2,7 +2,7 @@
 
 https://github.com/lemlooma/Artygram/wiki
 
-https://artygram.herokuapp.com/
+Live Demo: https://artygram.herokuapp.com/
 
 Artygram is an Instrgram clone targeted towards artist. On Artygram you can browse artist's profile pages and view their work 
 
