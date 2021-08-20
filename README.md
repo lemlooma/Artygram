@@ -8,6 +8,8 @@ Artygram is an Instrgram clone targeted towards artist. On Artygram you can brow
 
 ## Home View
 
+![homepage](artygram_homeView.png) 
+
 ## Technical Details
 
 Artygram's backend is built using Flask and frontend is built using React-Redux 
