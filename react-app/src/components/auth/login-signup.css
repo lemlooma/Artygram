@@ -1,5 +1,5 @@
 .login-form__container {
-    margin: 100px auto 0px 100px;
+    margin: 100px auto 0px auto;
     padding: 30px 10px;
 
     display: flex;
@@ -23,7 +23,7 @@
 }
 
 .sign-up__container {
-    margin: 10px 100px;
+    margin: 10px auto 0px auto;
     padding:20px 10px;
     display: flex;
     flex-direction: column;
@@ -128,9 +128,11 @@
     z-index: -1;
 }
 
+
 .errors{
     
     padding-bottom: 10px;
     color:rgb(255, 93, 93);
     font-weight: bold;
 }
+
