@@ -93,7 +93,7 @@ function User() {
       <div className="userPhotoFeed">
         {filteredPost.length > 0 ? (
           filteredPost.map((post) => (
-            <NavLink to={`post/${post.id}`}>
+            <NavLink to={`/post/${post.id}`}>
             <img className="userPostPhoto" src={post.pic_url} />
             </NavLink>
           ))

@@ -76,6 +76,7 @@ const PostDetails = () => {
               </div>
             ) : (
               <div className="div-in-post likebutton" >
+              
                 <i onClick={() => likePostDetail(post)} className="far unliked fa-heart"></i>
               </div>
             )}
