@@ -178,10 +178,10 @@
 .footer__container {
     display: flex;
     align-items:center;
-
+    
     position: fixed;
-    left: 30%;
-    right: 30%;
+    left: 20%;
+    right: 20%;
     bottom: 0px;
 }
 
@@ -190,6 +190,7 @@
     margin: 40px;
     color: rgb(65, 65, 65);
     font-size: 0.8rem;
+
 }
 
 .party {
