@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Link } from "react-router-dom"
+import { Link, NavLink } from "react-router-dom"
 import { getAllPosts, getLoginPosts, likeOnePost } from "../../store/post"
 import './homepage.css'
 
@@ -39,8 +39,17 @@ const HomePage = () => {
             {sortedPosts?.map(post =>
             (<div key={post.id} className='single-post__container'>
                 <div className='icon-username__container'>
+
+                    <Link to={`/user/${post.user_id}`}>
+                    <img className='post-icon' id='post-icon' src={`${post.user?.profile_pic}`} />
+                    </Link>
+                    <Link className='post-username'to={`/user/${post.user_id}`}>
+                    <span> {post.user?.username}</span>
+                    </Link>
+
                     <img className='post-icon' id='post-icon' src={`${post.user?.profile_pic}`} />
                     <span className='post-username'> {post.user?.username}</span>
+
                 </div>
                 <div>
                     <Link to={`post/${post.id}`}>
