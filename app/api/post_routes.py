@@ -80,7 +80,7 @@ def likeOnPost(id):
     user = current_user
     post = Post.query.get(id)
 
-    # print('this is the post!!!!!!!!!!!', dir(post.postLikes))
+    
     # post.postLikes.append(int(user.id))
 
     # post.postLikes is a list contains the User object. not the user.id

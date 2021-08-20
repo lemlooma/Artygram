@@ -41,7 +41,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
 
           <div className='right-navbar'>
             <div className='addpost__container'>
-              <NavLink exact to="/post/new">
+              <NavLink className="addpicHover" exact to="/post/new">
                 <img alt={`addpic`} className="addpic" src={`${addpic}`}></img>
               </NavLink>
             </div>
