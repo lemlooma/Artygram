@@ -13,6 +13,7 @@ import HomePage from './components/Homepage';
 import PostDetails from './components/PostDetails';
 import PostForm from './components/PostForm';
 import Following from './components/Following/following';
+import Followers from './Followers/followers';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -54,6 +55,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/user/:userId/following' exact={true} >
           <Following />
+        </ProtectedRoute>
+        <ProtectedRoute path='/user/:userId/followers' exact={true} >
+          <Followers />
         </ProtectedRoute>
         <ProtectedRoute path='/post/new' exact={true}>
           <PostForm />
