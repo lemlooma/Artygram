@@ -30,8 +30,7 @@ function User() {
     dispatch(getAllPosts())
   }, [])
 
- 
-
+  const addpic = "https://i.imgur.com/3yiJpcr.png";
   useEffect(() => {
     if (!userId) {
       return;
@@ -58,45 +57,59 @@ function User() {
           <img className="userProfilePic" src={user.profile_pic} />
         </div>
         <div>
-          <div>{user.username}</div>
+          <div className="userNameAndButton">
+          <div className="userName">{user.username}</div>
 
           <div>
           {+userId !== +loggedInUser.id &&  (isFollowing ? (
-              <button onClick={handleFollow}>Unfollow</button>
+              <button className ='button' onClick={handleFollow}><strong>Unfollow</strong></button>
             ) : (
-              <button onClick={handleFollow}>Follow</button>
+              <button className ='button' onClick={handleFollow}><strong>Follow</strong></button>
             ))}
+          </div>
           </div>
           <div className="postFollowerFollowing">
           <div className='post_followers_following'>
             <div className="user-posts__container">
            
-              <strong>{filteredPost.length}</strong> posts
+              <div className='numberPost'><strong >{filteredPost.length}</strong> posts</div>
             </div>
             <div>
-              <NavLink to={`/user/${user.id}/followers`}>
+              <NavLink className='followers' to={`/user/${user.id}/followers`}>
                 <strong>{user.follow_by?.length} </strong>followers
               </NavLink>
             </div>
             <div>
-              <NavLink to={`/user/${user.id}/following`}>
+              <NavLink className='following'  to={`/user/${user.id}/following`}>
                 <strong>{user.follows?.length}</strong> following
               </NavLink>
               </div>
             </div>
        
           </div>
-          <div>{user.bio}</div>
+          <div className='userBio'>{user.bio}</div>
         </div>
+      </div>"
+      <div className='borderContainer'>
+      <div className='border'></div>
       </div>
-      <div></div>
       <div className="userPhotoFeed">
         {filteredPost.length > 0 ? (
           filteredPost.map((post) => (
+            <NavLink to={`post/${post.id}`}>
             <img className="userPostPhoto" src={post.pic_url} />
+            </NavLink>
           ))
         ) : (
-          <div>Go create your first post!!!!</div>
+          <div> 
+           
+            <div className="addNewPost">
+            <NavLink exact to="/post/new">
+                <img alt={`addpic`} className="addPic" src={`${addpic}`}></img>
+              </NavLink>
+            </div>
+          </div>
+       
         )}
       </div>
     </div>
