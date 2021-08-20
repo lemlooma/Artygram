@@ -12,19 +12,17 @@ function User() {
   const dispatch = useDispatch()
 
   const [user, setUser] = useState([]);
-  
+
 
   const loggedInUser = useSelector((state) => state.session.user)
- 
 
   const posts = useSelector((state) => Object.values(state.posts))
-  const filteredPost = posts.filter((post) => post.user_id === userId)
 
+  const filteredPost = posts.filter((post) => post.user_id === +userId)
 
 
   useEffect(() => {
     dispatch(getAllPosts())
-    
   }, [])
 
   // useEffect(()=>{
@@ -37,19 +35,19 @@ function User() {
   //     const response = await fetch('/api/users/');
   //     const responseData = await response.json();
   //     setUsers(responseData.users);
-    
+
   //   }
   //   fetchData();
 
   //   const selectedUser = users.filter((user)=>{
-      
+
   //     return userId === user.id
-      
+
   //     })
   //     console.log(selectedUser)
   // }, []);
 
-  
+
 
   useEffect(() => {
     if (!userId) {
@@ -62,7 +60,7 @@ function User() {
     })();
   }, [userId]);
 
-  
+
   if (!user) {
     return null;
   }
@@ -84,12 +82,14 @@ function User() {
               {filteredPost.length} posts
             </div>
             <div>
-              {/* ({user?.follow_by.length}) followers */}
+            <NavLink to={`/user/${user.id}/followers`}>
+              {user.follow_by?.length} followers
+              </NavLink>
             </div>
             <div>
-              {/* <NavLink to={`/user/${user.id}/following`}>
-                ({user?.follows.length}) following
-              </NavLink> */}
+              <NavLink to={`/user/${user.id}/following`}>
+                {user.follows?.length} following
+              </NavLink>
             </div>
           </div>
           <div>

@@ -46,9 +46,9 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <ProtectedRoute path='/users' exact={true} >
+        {/* <ProtectedRoute path='/users' exact={true} >
           <UsersList/>
-        </ProtectedRoute>
+        </ProtectedRoute> */}
         <ProtectedRoute path='/user/:userId' exact={true} >
           <User />
         </ProtectedRoute>
@@ -61,8 +61,6 @@ function App() {
         <ProtectedRoute path='/post/:postId' exact={true} >
           <PostDetails />
         </ProtectedRoute>
-        
-
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
         </ProtectedRoute>
