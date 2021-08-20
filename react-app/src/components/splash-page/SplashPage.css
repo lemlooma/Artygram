@@ -177,10 +177,12 @@
 
 .footer__container {
     display: flex;
-
     align-items:center;
-    margin-top: 60px;
-
+    
+    position: fixed;
+    left: 20%;
+    right: 20%;
+    bottom: 0px;
 }
 
 .footer-link {
@@ -188,6 +190,7 @@
     margin: 40px;
     color: rgb(65, 65, 65);
     font-size: 0.8rem;
+
 }
 
 .party {
