@@ -22,17 +22,17 @@ const getUser = (users) => ({
     }
   }
 
-  export const getAllUsers = (id) => async dispatch => {
+  // export const getAllUsers = (id) => async dispatch => {
 
-    const response = await fetch(`/api/user/${id}`)
-    console.log(id)
+  //   const response = await fetch(`/api/users/${id}`)
+  //   console.log(id)
 
-    if(response.ok){
-      const users = await response.json()
-      console.log('xxxxxxxxxxx', users)
-      dispatch(getUser(users))
-    }
-  }
+  //   if(response.ok){
+  //     const users = await response.json()
+  //     console.log('xxxxxxxxxxx', users)
+  //     dispatch(getUser(users))
+  //   }
+  // }
 
   const initialState = {}
 

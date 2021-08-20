@@ -8,20 +8,20 @@ import { getAllFollowing, getAllUsers} from '../../store/user';
 
 function Following(){
     const {userId} = useParams()
-    const user = useSelector((state) => state.session.user)
+    const user = useSelector((state) => state.users.user)
 
     const dispatch = useDispatch()
 
     useEffect(()=>{
         dispatch(getAllFollowing(userId))
-        dispatch(getAllUsers(userId))
-    })
+        // dispatch(getAllUsers(userId))
+    },[])
     return (
 
     <>
             <div className='followingPageBody'>
 
-                   {user.follows.map((following)=>( 
+                   {user?.follows.map((following)=>( 
                        <NavLink to={`/user/${following.id}`}>
                        <div>{following.username}</div>
                        </NavLink>
