@@ -1,3 +1,26 @@
 .followingPageBody {
-    padding-top: 300px;
+    
+    padding-top: 100px;
 }
+
+.profilePic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+
+}
+
+.followersDetailContainer {
+ 
+    display: flex;
+    flex-direction: row;
+    height: 150px;
+   
+ 
+}
+
+.followersDetail {
+    padding-top: 40px;
+    padding-left: 30px;
+}
+

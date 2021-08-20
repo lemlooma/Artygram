@@ -17,19 +17,16 @@ const getUser = (users) => ({
   
     if(response.ok){
         const following = await response.json()
-        console.log(following)
         dispatch(getFollowing(following))
     }
   }
 
-  export const getAllUsers = (id) => async dispatch => {
+  export const getAllUsers = () => async dispatch => {
 
-    const response = await fetch(`/api/user/${id}`)
-    console.log(id)
+    const response = await fetch('/api/users/all')
 
     if(response.ok){
       const users = await response.json()
-      console.log('xxxxxxxxxxx', users)
       dispatch(getUser(users))
     }
   }
@@ -42,8 +39,9 @@ const getUser = (users) => ({
             return {user: action.payload}
         }
         case GET_USERS : {
-          return {user: action.payload}
+          return {...state, ...action.payload}
         }
+     
         default:
           return state;
       }

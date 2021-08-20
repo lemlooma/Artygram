@@ -20,14 +20,14 @@ function Following() {
   return (
     <div className="followingPageBody">
         
-      {user.follows.map((following) => (
+      {user.follow_by.map((followBy) => (
         <>
          <div className='followersDetailContainer'>
             
               {allUser.users?.map((user) =>
-                user.id === following.id ? (
+                user.id === followBy.id ? (
                   <div>
-                       <NavLink to={`/user/${following.id}`}>
+                       <NavLink to={`/user/${followBy.id}`}>
                     <img className="profilePic" src={user.profile_pic} />
                     </NavLink>
                   </div>
@@ -35,8 +35,8 @@ function Following() {
               )}
            
             <div className='followersDetail'>
-            <NavLink to={`/user/${following.id}`}>
-            <div>{following.username}</div>
+            <NavLink to={`/user/${followBy.id}`}>
+            <div>{followBy.username}</div>
           </NavLink>
           </div>
           </div>
