@@ -45,3 +45,9 @@ margin-right: 10px;
   height: 28px;
   margin-top: 10px;
 }
+.search{
+  width:300px;
+  height: 25px;
+  border-radius: 8px;
+  text-align: center;
+}
