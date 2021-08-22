@@ -35,37 +35,51 @@ const HomePage = () => {
 
 
   return (
-    <div className='photo-feed__container'>
-      {sortedPosts?.map(post =>
-      (<div key={post.id} className='single-post__container'>
-        <div className='icon-username__container'>
-          <Link to={`/user/${post.user_id}`}>
-            <img className='post-icon' id='post-icon' src={`${post.user?.profile_pic}`} />
-          </Link>
-          <Link className='post-username' to={`/user/${post.user_id}`}>
-            <span> {post.user?.username}</span>
-          </Link>
+    <div className="photo-feed__container">
+      {sortedPosts?.map((post) => (
+        <div key={post.id} className="single-post__container">
+          <div className="icon-username__container">
+            <Link to={`/user/${post.user_id}`}>
+              <img
+                className="post-icon"
+                id="post-icon"
+                src={`${post.user?.profile_pic}`}
+              />
+            </Link>
+            <Link className="post-username" to={`/user/${post.user_id}`}>
+              <span> {post.user?.username}</span>
+            </Link>
+          </div>
+          <div>
+            <Link to={`post/${post.id}`}>
+              <img
+                className="post-img"
+                src={post.pic_url}
+                alt={`img-${post.id}`}
+              />
+            </Link>
+          </div>
+          <div className="like-button-container">
+            {post.postlikes.includes(user.id) ? (
+              <button className="likebutton" onClick={() => setPost(post)}>
+                <i class="fas liked fa-heart"></i>
+              </button>
+            ) : (
+              <button className="likebutton" onClick={() => setPost(post)}>
+                <i className="far unliked fa-heart"></i>
+              </button>
+            )}
+          </div>
+          <div className="photofeed-details-container">
+            <div>likes: {post.likesnum}</div>
+            <div className="caption-photofeed">{post.caption}</div>
+            <div>comments: {post.commentsnum}</div>
+            <div className="timestamp">{post.timestamp}</div>
+          </div>
         </div>
-        <div>
-          <Link to={`post/${post.id}`}>
-
-            <img className='post-img' src={post.pic_url} alt={`img-${post.id}`} />
-          </Link>
-        </div>
-        <div>
-          {post.postlikes.includes(user.id)
-            ? <button className='likebutton' onClick={() => setPost(post)} ><i class="fas liked fa-heart"></i></button>
-            : <button className='likebutton' onClick={() => setPost(post)} ><i className="far unliked fa-heart"></i></button>}
-
-        </div>
-        <div>likes: {post.likesnum}</div>
-        <div className="caption-photofeed">{post.caption}</div>
-        <div>comments: {post.commentsnum}</div>
-        <div>{post.timestamp}</div>
-      </div>)
-      )}
+      ))}
     </div>
-  )
+  );
 }
 
 export default HomePage

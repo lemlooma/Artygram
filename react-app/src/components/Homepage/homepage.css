@@ -49,6 +49,9 @@
 .likebutton{
     border: none;
     background-color: white;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    
 }
 
 .post-username {
@@ -60,4 +63,18 @@
     font-weight: bold;
     padding-bottom: 10px;
     padding-top: 10px;
+}
+
+.like-button-container{
+    padding: 4px;
+}
+
+.photofeed-details-container{
+    padding: 10px;
+}
+
+.timestamp{
+    font-size: 12px;
+    padding-top: 20px;
+    color:grey
 }
