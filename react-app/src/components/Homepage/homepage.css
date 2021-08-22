@@ -55,3 +55,9 @@
     text-decoration: none;
     color: black;
 }
+
+.caption-photofeed{
+    font-weight: bold;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}

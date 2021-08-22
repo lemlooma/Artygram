@@ -59,7 +59,7 @@ const HomePage = () => {
 
         </div>
         <div>likes: {post.likesnum}</div>
-        <div>{post.caption}</div>
+        <div className="caption-photofeed">{post.caption}</div>
         <div>comments: {post.commentsnum}</div>
         <div>{post.timestamp}</div>
       </div>)
