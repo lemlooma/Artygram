@@ -127,7 +127,7 @@ const PostDetails = () => {
 
           {/* <div className='div-in-post'>comments: {post.commentsnum}</div> */}
 
-          <div className="div-in-post">{post.timestamp}</div>
+          <div className="timestamp-postdetails">{post.timestamp}</div>
 
           <div className="div-in-post">
             <div className="post-comment__div">

@@ -88,3 +88,11 @@
 .delete-post:hover{
     color:blue;
 }
+
+
+.timestamp-postdetails{
+    font-size: 13px;
+    padding-top: 10px;
+    color:grey;
+    padding-left: 10px
+}
