@@ -36,7 +36,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
           </div>
 
           <div className='search__container'>
-            <input className="search" type="text" placeholder=" Search " />
+            <input className="search" type="text" placeholder=" Search feature coming soon ! " />
           </div>
 
           <div className='right-navbar'>

@@ -139,7 +139,7 @@ const PostDetails = () => {
             {post.comments.length > 0 ? (
               post.comments.map((comment) => <div>{comment.caption}</div>)
             ) : (
-              <div>Be the first one here!</div>
+              <div>Be the first comment here!</div>
             )}
           </div>
         </div>
