@@ -43,7 +43,9 @@
 }
 
 .div-in-post{
-    padding: 10px;
+    padding: 9px;
+
+
 }
 
 .post-comment__div{
@@ -52,6 +54,8 @@
     justify-content: space-between;
     align-items: center;
 }
+
+
 .post-comment__button{
     background-color: white;
     border: 0px;
@@ -61,6 +65,9 @@
     font-size: 0.8rem;
     font-weight: bold;
     padding: 8px;
+}
+.post-comment__button:hover{
+cursor: pointer;
 }
 
 .like-delete__container{
@@ -95,4 +102,9 @@
     padding-top: 10px;
     color:grey;
     padding-left: 10px
+}
+
+.comment-msg{
+    color: grey;
+
 }

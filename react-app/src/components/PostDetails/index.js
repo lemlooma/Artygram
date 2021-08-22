@@ -127,11 +127,11 @@ const PostDetails = () => {
 
           {/* <div className='div-in-post'>comments: {post.commentsnum}</div> */}
 
-          <div className="timestamp-postdetails">{post.timestamp}</div>
+          {/* <div className="timestamp-photodetails">{post.timestamp}</div> */}
 
           <div className="div-in-post">
             <div className="post-comment__div">
-              <div>comments:</div>
+              <div className="comment-msg">Be the first comment here!</div>
               <button onClick={handleComment} className="post-comment__button">
                 post comment
               </button>
@@ -139,7 +139,7 @@ const PostDetails = () => {
             {post.comments.length > 0 ? (
               post.comments.map((comment) => <div>{comment.caption}</div>)
             ) : (
-              <div>Be the first comment here!</div>
+           <div>  </div>
             )}
           </div>
         </div>
