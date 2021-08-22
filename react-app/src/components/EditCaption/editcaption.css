@@ -1,0 +1,51 @@
+.update-button{
+     margin-top: 20px;
+    background-color: #8dda98;
+
+    border: 0px;
+    height: 33.33px;
+    /* letter-spacing: 0.1rem; */
+    color: #f5f7f9;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    transition-timing-function: ease-in-out;
+  
+}
+.update-button:hover {
+    background-color: #42c462;
+    cursor: pointer;
+}
+
+.cancel-edit-button{
+     margin-top: 20px;
+  
+    background-color: #f78e8e;
+
+    border: 0px;
+    height: 33.33px;
+    /* letter-spacing: 0.1rem; */
+    color: #f5f7f9;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    transition: background-color 0.5s;
+    transition-timing-function: ease-in-out;
+   
+}
+
+.cancel-edit-button:hover {
+    background-color: rgb(241, 20, 20);
+    cursor: pointer;
+}
+
+.edit-input-form{
+    width: 300px;
+    background-color: #fafafa;
+    height: 33.33px;
+    border-radius: 3px;
+    border: 1px solid #dbdbdb;
+    padding: 0 10px;
+    color: #000;
+}
