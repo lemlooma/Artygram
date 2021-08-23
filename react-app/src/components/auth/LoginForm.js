@@ -97,7 +97,7 @@ const LoginForm = () => {
               value: "#f60095",
             },
             number: {
-              value: 60,
+              value: 50,
             },
             size: {
               value: 3,
