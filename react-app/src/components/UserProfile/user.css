@@ -30,9 +30,9 @@
     justify-content: center;
     flex-wrap: wrap;
     box-sizing: border-box;
-    max-width: 1248px;
-    margin: 0px 12%;
-
+    /* width: 80%; */
+    margin: 0px 15%;
+    margin-bottom: 50px;
   }
 
   .borderContainer {
