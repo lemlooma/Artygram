@@ -1,9 +1,10 @@
 
 .userPageBody {
+  display: flex;
     padding-top: 100px;
-    display: flex;
     flex-direction: column;
-    /* justify-content: center; */
+    justify-content: center;
+    margin: 0px 10%;
   }
 
   .userDetails {
@@ -24,14 +25,20 @@
     flex-direction: row;
   }
 
+  .userPhoto__container{
+    max-width: 100%;
+    justify-content: center;
+    /* padding-left: 10%; */
+    padding: 0 10%;
+  }
+
+
   .userPhotoFeed {
     display: flex;
     flex-direction: row;
     justify-content: center;
     flex-wrap: wrap;
     box-sizing: border-box;
-    /* width: 80%; */
-    margin: 0px 15%;
     margin-bottom: 50px;
   }
 

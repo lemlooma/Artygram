@@ -108,25 +108,25 @@ function User() {
       <div className='borderContainer'>
         <div className='border'></div>
       </div>
-
-      <div className="userPhotoFeed">
-        {filteredPost.length > 0 ? (
-          filteredPost.map((post) => (
-            <NavLink to={`/post/${post.id}`} key={post.id}>
-              <img className="userPostPhoto" src={post.pic_url} alt={post.id} />
-            </NavLink>
-          ))
-        ) : (
-          <div>
-
-            <div className="addNewPost">
-              <NavLink exact to="/post/new">
-                <img alt={`addpic`} className="addPic" src={`${addpic}`}></img>
+      <div className='userPhoto__container'>
+        <div className="userPhotoFeed">
+          {filteredPost.length > 0 ? (
+            filteredPost.map((post) => (
+              <NavLink to={`/post/${post.id}`} key={post.id}>
+                <img className="userPostPhoto" src={post.pic_url} alt={post.id} />
               </NavLink>
-            </div>
-          </div>
+            ))
+          ) : (
 
-        )}
+            <div>
+              <div className="addNewPost">
+                <NavLink exact to="/post/new">
+                  <img alt={`addpic`} className="addPic" src={`${addpic}`}></img>
+                </NavLink>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
