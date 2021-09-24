@@ -98,7 +98,7 @@ export const createPost = (caption, pic_url) => async dispatch => {
     if (req.ok) {
         const data = await req.json();
         dispatch(newPost(data))
-
+        return data
     } else if (req.status < 500) {
         const data = await req.json();
         if (data.errors) {
