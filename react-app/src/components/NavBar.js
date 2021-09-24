@@ -35,9 +35,9 @@ const NavBar = ({ userdata, setAuthenticated }) => {
             </NavLink>
           </div>
 
-          <div className='search__container'>
+          {/* <div className='search__container'>
             <input className="search" type="text" placeholder=" Search feature coming soon ! " />
-          </div>
+          </div> */}
 
           <div className='right-navbar'>
             <div className='addpost__container'>
