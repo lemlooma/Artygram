@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllPosts } from "../../store/post";
+import { getAllFollowing } from "../../store/session";
 // import { getAllUsers } from '../../store/user';
 // import PostForm from '../PostForm';
 import "./user.css";
@@ -22,12 +23,14 @@ function User() {
   const handleFollow = async () => {
     const response = await fetch(`/api/users/${userId}/follow`);
     const obj = await response.json();
+
     setUser({ ...obj.otherUser });
     setIsFollowing(!isFollowing);
   };
 
   useEffect(() => {
     dispatch(getAllPosts());
+    dispatch(getAllFollowing(loggedInUser.id))
   }, [dispatch]);
 
   const addpic = "https://i.imgur.com/3yiJpcr.png";
@@ -93,8 +96,8 @@ function User() {
       <div className="userPhotoFeed">
         {filteredPost.length > 0 ? (
           filteredPost.map((post) => (
-            <NavLink to={`/post/${post.id}`}>
-            <img className="userPostPhoto" src={post.pic_url} alt={post.id} />
+            <NavLink to={`/post/${post.id}`} key={post.id}>
+            <img className="userPostPhoto" src={post.pic_url} alt={post.id}  />
             </NavLink>
           ))
         ) : (

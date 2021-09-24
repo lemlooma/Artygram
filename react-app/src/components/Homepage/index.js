@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { getAllPosts, likeOnePost } from "../../store/post"
+import { getAllFollowing } from "../../store/session"
 import './homepage.css'
 
 
@@ -21,6 +22,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getAllPosts())
+    dispatch(getAllFollowing(user.id))
   }, [dispatch])
 
   useEffect(() => {
@@ -63,7 +65,7 @@ const HomePage = () => {
           <div className="like-button-container">
             {post.postlikes.includes(user.id) ? (
               <button className="likebutton" onClick={() => setPost(post)}>
-                <i class="fas liked fa-heart"></i>
+                <i className="fas liked fa-heart"></i>
               </button>
             ) : (
               <button className="likebutton" onClick={() => setPost(post)}>

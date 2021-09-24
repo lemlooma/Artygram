@@ -12,7 +12,7 @@ const LogoutButton = () => {
     history.push("/splash")
   };
 
-  return <i onClick={onLogout}  class="fas fa-sign-out-alt" id='logOutButton'></i>
+  return <i onClick={onLogout}  className="fas fa-sign-out-alt" id='logOutButton'></i>
 };
 
 export default LogoutButton;
