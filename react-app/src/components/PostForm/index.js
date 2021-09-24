@@ -88,7 +88,7 @@ const PostForm = () => {
               value: 3,
             },
           },
-         
+
         }}
       />
     </div>

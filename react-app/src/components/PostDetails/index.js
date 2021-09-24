@@ -66,6 +66,7 @@ const PostDetails = () => {
                 className="post-icon"
                 id="post-icon"
                 src={`${post.user?.profile_pic}`}
+                alt={post.id}
               />
             </Link>
             <Link className="post-username" to={`/user/${post.user_id}`}>

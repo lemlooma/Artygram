@@ -22,10 +22,12 @@ def get_posts():
     return {post.id: post.to_dict() for post in posts}
     # return {"Posts": {post.id: post.to_dict() for post in posts}}
 
+
 @post_routes.route('/all')
 def get_all_posts():
     posts = Post.query.all()
     return {post.id: post.to_dict() for post in posts}
+
 
 @post_routes.route('/new', methods=['GET', 'POST'])
 @login_required
@@ -80,7 +82,6 @@ def likeOnPost(id):
     user = current_user
     post = Post.query.get(id)
 
-    
     # post.postLikes.append(int(user.id))
 
     # post.postLikes is a list contains the User object. not the user.id
@@ -88,7 +89,7 @@ def likeOnPost(id):
     allUsersId = [user.id for user in post.postLikes]
 
     if user.id in allUsersId:
-        #have to remove the whole user object.
+        # have to remove the whole user object.
         post.postLikes.remove(user)
     else:
         # this has to add the user object. instead of just the user.id

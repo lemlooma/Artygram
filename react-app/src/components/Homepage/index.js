@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Link, NavLink } from "react-router-dom"
-import { getAllPosts, getLoginPosts, likeOnePost } from "../../store/post"
+import { Link } from "react-router-dom"
+import { getAllPosts, likeOnePost } from "../../store/post"
 import './homepage.css'
 
 
@@ -21,14 +21,14 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getAllPosts())
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     if (getPost) {
       dispatch(likeOnePost(getPost))
       // dispatch(getAllPosts())
     }
-  }, [getPost])
+  }, [getPost,dispatch])
 
 
 
@@ -44,6 +44,7 @@ const HomePage = () => {
                 className="post-icon"
                 id="post-icon"
                 src={`${post.user?.profile_pic}`}
+                alt={[post.id]}
               />
             </Link>
             <Link className="post-username" to={`/user/${post.user_id}`}>

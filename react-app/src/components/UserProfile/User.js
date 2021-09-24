@@ -18,15 +18,17 @@ function User() {
 
 
   const filteredPost = posts.filter((post) => post.user_id === +userId);
+
   const handleFollow = async () => {
     const response = await fetch(`/api/users/${userId}/follow`);
     const obj = await response.json();
     setUser({ ...obj.otherUser });
     setIsFollowing(!isFollowing);
   };
+
   useEffect(() => {
     dispatch(getAllPosts());
-  }, []);
+  }, [dispatch]);
 
   const addpic = "https://i.imgur.com/3yiJpcr.png";
 
@@ -37,7 +39,7 @@ function User() {
     (async () => {
       const response = await fetch(`/api/users/${userId}`);
       const user = await response.json();
-    
+
       setUser(user);
     })();
   }, [userId]);
@@ -50,7 +52,7 @@ function User() {
     <div className="userPageBody">
       <div className="userDetails">
         <div>
-          <img className="userProfilePic" src={user.profile_pic} />
+          <img className="userProfilePic" src={user.profile_pic} alt={user.id} />
         </div>
         <div>
           <div className="userNameAndButton">
@@ -67,7 +69,7 @@ function User() {
           <div className="postFollowerFollowing">
           <div className='post_followers_following'>
             <div className="user-posts__container">
-           
+
               <div className='numberPost'><strong >{filteredPost.length}</strong> posts</div>
             </div>
             <div>
@@ -92,19 +94,19 @@ function User() {
         {filteredPost.length > 0 ? (
           filteredPost.map((post) => (
             <NavLink to={`/post/${post.id}`}>
-            <img className="userPostPhoto" src={post.pic_url} />
+            <img className="userPostPhoto" src={post.pic_url} alt={post.id} />
             </NavLink>
           ))
         ) : (
-          <div> 
-           
+          <div>
+
             <div className="addNewPost">
             <NavLink exact to="/post/new">
                 <img alt={`addpic`} className="addPic" src={`${addpic}`}></img>
               </NavLink>
             </div>
           </div>
-       
+
         )}
       </div>
     </div>

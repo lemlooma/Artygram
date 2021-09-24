@@ -5,7 +5,7 @@ import LoginForm from './components/auth/LoginForm';
 import SignUpForm from './components/auth/SignUpForm';
 import NavBar from './components/NavBar';
 import ProtectedRoute from './components/auth/ProtectedRoute';
-import UsersList from './components/UsersList';
+// import UsersList from './components/UsersList';
 import User from './components/UserProfile/User';
 import { authenticate } from './store/session';
 import SplashPage from "./components/splash-page/SplashPage";
@@ -64,6 +64,9 @@ function App() {
         </ProtectedRoute>
         <ProtectedRoute path='/post/:postId' exact={true} >
           <PostDetails />
+        </ProtectedRoute>
+        <ProtectedRoute path='/' exact={true} >
+          <HomePage />
         </ProtectedRoute>
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
