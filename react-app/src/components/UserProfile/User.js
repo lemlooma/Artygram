@@ -12,9 +12,11 @@ function User() {
   const dispatch = useDispatch();
   const [user, setUser] = useState({});
   const loggedInUser = useSelector((state) => state.session.user);
+
   const [isFollowing, setIsFollowing] = useState(
     loggedInUser.follows.map((u) => +u.id).includes(+userId)
   );
+
   const posts = useSelector((state) => Object.values(state.posts));
 
 
@@ -25,6 +27,7 @@ function User() {
     const obj = await response.json();
 
     setUser({ ...obj.otherUser });
+    console.log()
     setIsFollowing(!isFollowing);
   };
 
