@@ -143,12 +143,6 @@
     height: 100%;
 }
 
-.footer__container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 100px;
-}
 
 .footer-link {
     text-decoration: None;
@@ -175,22 +169,69 @@
     border: solid 1px rgb(143, 143, 143);
 }
 
+
 .footer__container {
     display: flex;
     align-items:center;
-    
     position: fixed;
-    left: 20%;
-    right: 20%;
+    /* left: 20%;
+    right: 20%; */
     bottom: 0px;
+    width: 100%;
+    margin-top: 50px;
+    justify-content: center;
+
 }
 
-.footer-link {
+.personal-info__container{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0px 10px;
+    justify-content: center;
+}
+
+.personal-info__container a {
+    margin: unset;
+}
+.portfolio{
+    text-decoration: unset;
+    color: black;
+}
+.portfolio:hover{
+    text-decoration: underline;
+}
+
+.linkin-github__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.fa-linkedin{
+    font-size: 30px;
+    color: #0A66C2;
+}
+.fa-github{
+    font-size: 30px;
+}
+
+/* .footer-link {
     text-decoration: None;
     margin: 40px;
     color: rgb(65, 65, 65);
     font-size: 0.8rem;
+} */
 
+.project-repo__container{
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 0px 10px;
+    justify-content: center;
+    align-items: center;
 }
 
 .party {

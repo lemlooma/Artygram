@@ -4,7 +4,7 @@
 const SET_USER = 'session/SET_USER';
 const REMOVE_USER = 'session/REMOVE_USER';
 const DEMO_LOGIN = 'session/demoLogin';
-// const GET_FOLLOWING = 'followers/GET_FOLLOWING'
+const GET_FOLLOWING = 'followers/GET_FOLLOWING'
 
 
 const setUser = (user) => ({
@@ -18,15 +18,15 @@ const removeUser = () => ({
 
 const demoLogin = (demoUser) => {
   return {
-    type: DEMO_LOGIN, 
+    type: DEMO_LOGIN,
     payload: demoUser
   }
 }
 
-// const getFollowing = (user) => ({
-//   type: GET_FOLLOWING,
-//   payload: user
-// })
+const getFollowing = (user) => ({
+  type: GET_FOLLOWING,
+  payload: user
+})
 
 
 const initialState = { user: null };
@@ -42,7 +42,7 @@ export const authenticate = () => async (dispatch) => {
     if (data.errors) {
       return;
     }
-  
+
     dispatch(setUser(data));
   }
 }
@@ -58,8 +58,8 @@ export const login = (email, password) => async (dispatch) => {
       password
     })
   });
-  
-  
+
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -100,7 +100,7 @@ export const signUp = (username, email, password) => async (dispatch) => {
       password,
     }),
   });
-  
+
   if (response.ok) {
     const data = await response.json();
     dispatch(setUser(data))
@@ -128,6 +128,17 @@ export const loginDemo = () => async (dispatch) => {
  }
 }
 
+export const getAllFollowing = (id) => async (dispatch) => {
+  const response = await fetch(`/api/users/${id}/following`);
+
+  if (response.ok) {
+    const user = await response.json();
+    dispatch(setUser(user));
+  }
+};
+
+
+
 
 
 export default function reducer(state = initialState, action) {
@@ -136,7 +147,7 @@ export default function reducer(state = initialState, action) {
       return { user: action.payload }
     case REMOVE_USER:
       return { user: null }
-    case DEMO_LOGIN: 
+    case DEMO_LOGIN:
       return { user: action.payload }
     // case GET_FOLLOWING : {
     //     return {user: action.payload}
@@ -145,5 +156,3 @@ export default function reducer(state = initialState, action) {
       return state;
   }
 }
-
-

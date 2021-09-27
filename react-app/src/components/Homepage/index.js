@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
-import { Link, NavLink } from "react-router-dom"
-import { getAllPosts, getLoginPosts, likeOnePost } from "../../store/post"
+import { Link } from "react-router-dom"
+import { getAllPosts, likeOnePost } from "../../store/post"
+import { getAllFollowing } from "../../store/session"
 import './homepage.css'
 
 
@@ -21,14 +22,15 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getAllPosts())
-  }, [])
+    dispatch(getAllFollowing(user.id))
+  }, [dispatch])
 
   useEffect(() => {
     if (getPost) {
       dispatch(likeOnePost(getPost))
       // dispatch(getAllPosts())
     }
-  }, [getPost])
+  }, [getPost,dispatch])
 
 
 
@@ -44,6 +46,7 @@ const HomePage = () => {
                 className="post-icon"
                 id="post-icon"
                 src={`${post.user?.profile_pic}`}
+                alt={[post.id]}
               />
             </Link>
             <Link className="post-username" to={`/user/${post.user_id}`}>
@@ -62,7 +65,7 @@ const HomePage = () => {
           <div className="like-button-container">
             {post.postlikes.includes(user.id) ? (
               <button className="likebutton" onClick={() => setPost(post)}>
-                <i class="fas liked fa-heart"></i>
+                <i className="fas liked fa-heart"></i>
               </button>
             ) : (
               <button className="likebutton" onClick={() => setPost(post)}>

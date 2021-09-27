@@ -60,12 +60,13 @@ const PostDetails = () => {
     <div className="photo-feed__container">
       {post ? (
         <div className="post-detail__container">
-          <div class="icon-username__container">
+          <div className="icon-username__container">
             <Link to={`/user/${post.user_id}`}>
               <img
                 className="post-icon"
                 id="post-icon"
                 src={`${post.user?.profile_pic}`}
+                alt={post.id}
               />
             </Link>
             <Link className="post-username" to={`/user/${post.user_id}`}>
@@ -86,7 +87,7 @@ const PostDetails = () => {
               <div className="div-in-post likebutton">
                 <i
                   onClick={() => likePostDetail(post)}
-                  class="fas liked fa-heart"
+                  className="fas liked fa-heart"
                 ></i>
               </div>
             ) : (
@@ -101,7 +102,7 @@ const PostDetails = () => {
               className="delete-post"
               hidden={user.id === post.user_id ? false : true}
             >
-              <i onClick={handleDelete} class="far fa-trash-alt"></i>
+              <i onClick={handleDelete} className="far fa-trash-alt"></i>
             </div>
           </div>
 
@@ -127,11 +128,11 @@ const PostDetails = () => {
 
           {/* <div className='div-in-post'>comments: {post.commentsnum}</div> */}
 
-          <div className="timestamp-postdetails">{post.timestamp}</div>
+          {/* <div className="timestamp-photodetails">{post.timestamp}</div> */}
 
           <div className="div-in-post">
             <div className="post-comment__div">
-              <div>comments:</div>
+              <div className="comment-msg">Be the first comment here!</div>
               <button onClick={handleComment} className="post-comment__button">
                 post comment
               </button>
@@ -139,7 +140,7 @@ const PostDetails = () => {
             {post.comments.length > 0 ? (
               post.comments.map((comment) => <div>{comment.caption}</div>)
             ) : (
-              <div>Be the first comment here!</div>
+           <div>  </div>
             )}
           </div>
         </div>

@@ -11,14 +11,14 @@ const getUser = (users) => ({
   payload: users,
 });
 
-export const getAllFollowing = (id) => async (dispatch) => {
-  const response = await fetch(`/api/users/${id}/following`);
+// export const getAllFollowing = (id) => async (dispatch) => {
+//   const response = await fetch(`/api/users/${id}/following`);
 
-  if (response.ok) {
-    const following = await response.json();
-    dispatch(getFollowing(following));
-  }
-};
+//   if (response.ok) {
+//     const following = await response.json();
+//     dispatch(getFollowing(following));
+//   }
+// };
 
 export const getAllUsers = () => async (dispatch) => {
   const response = await fetch("/api/users/all");

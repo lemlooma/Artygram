@@ -57,7 +57,7 @@ export const getAllPosts = () => async dispatch => {
 
 
 export const updateCaption = (post) => async dispatch => {
-    const { id, caption, } = post
+    const { id } = post
     const res = await fetch(`/api/posts/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -98,7 +98,7 @@ export const createPost = (caption, pic_url) => async dispatch => {
     if (req.ok) {
         const data = await req.json();
         dispatch(newPost(data))
-
+        return data
     } else if (req.status < 500) {
         const data = await req.json();
         if (data.errors) {
