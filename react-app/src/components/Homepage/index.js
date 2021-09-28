@@ -76,7 +76,7 @@ const HomePage = () => {
           <div className="photofeed-details-container">
             <div>likes: {post.likesnum}</div>
             <div className="caption-photofeed">{post.caption}</div>
-            <div>comments: {post.commentsnum}</div>
+            {/* <div>comments: {post.commentsnum}</div> */}
             <div className="timestamp">{post.timestamp}</div>
           </div>
         </div>

@@ -130,7 +130,7 @@ const PostDetails = () => {
 
           {/* <div className="timestamp-photodetails">{post.timestamp}</div> */}
 
-          <div className="div-in-post">
+          {/* <div className="div-in-post">
             <div className="post-comment__div">
               <div className="comment-msg">Be the first comment here!</div>
               <button onClick={handleComment} className="post-comment__button">
@@ -142,7 +142,7 @@ const PostDetails = () => {
             ) : (
            <div>  </div>
             )}
-          </div>
+          </div> */}
         </div>
       ) : null}
     </div>
