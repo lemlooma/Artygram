@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { getAllUsers } from "../store/user";
@@ -8,15 +8,15 @@ import "./followers.css";
 
 function Followers() {
   const { userId } = useParams();
-  const user = useSelector((state) => state.session.user);
+  // const user = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
 
   const allUser = useSelector((state) => state.users);
- 
+
 
   useEffect(() => {
     dispatch(getAllUsers());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="followingPageBody">
@@ -29,7 +29,7 @@ function Followers() {
                   user.id === followBy.id ? (
                     <div>
                       <NavLink to={`/user/${followBy.id}`}>
-                        <img className="profilePic" src={user.profile_pic} />
+                        <img className="profilePic" src={user.profile_pic} alt={user.id} />
                       </NavLink>
                     </div>
                   ) : null

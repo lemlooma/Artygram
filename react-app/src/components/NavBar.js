@@ -35,9 +35,9 @@ const NavBar = ({ userdata, setAuthenticated }) => {
             </NavLink>
           </div>
 
-          <div className='search__container'>
+          {/* <div className='search__container'>
             <input className="search" type="text" placeholder=" Search feature coming soon ! " />
-          </div>
+          </div> */}
 
           <div className='right-navbar'>
             <div className='addpost__container'>
@@ -47,7 +47,7 @@ const NavBar = ({ userdata, setAuthenticated }) => {
             </div>
             <div className='logout__container'>
               <NavLink to={`/user/${user.id}`}>
-                <img class="navbarProPic" src={user.profile_pic} />
+                <img className="navbarProPic" src={user.profile_pic} alt={user.id} />
               </NavLink>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </div>

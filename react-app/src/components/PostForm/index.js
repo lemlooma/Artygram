@@ -21,9 +21,11 @@ const PostForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(createPost(caption, pic_url));
-
-    history.push("/");
+    const post = await dispatch(createPost(caption, pic_url));
+    console.log(post)
+    if(post.id){
+      history.push("/");
+    }
   };
 
   const cancel = () => {
@@ -88,7 +90,7 @@ const PostForm = () => {
               value: 3,
             },
           },
-         
+
         }}
       />
     </div>

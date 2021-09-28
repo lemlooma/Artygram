@@ -60,12 +60,13 @@ const PostDetails = () => {
     <div className="photo-feed__container">
       {post ? (
         <div className="post-detail__container">
-          <div class="icon-username__container">
+          <div className="icon-username__container">
             <Link to={`/user/${post.user_id}`}>
               <img
                 className="post-icon"
                 id="post-icon"
                 src={`${post.user?.profile_pic}`}
+                alt={post.id}
               />
             </Link>
             <Link className="post-username" to={`/user/${post.user_id}`}>
@@ -86,7 +87,7 @@ const PostDetails = () => {
               <div className="div-in-post likebutton">
                 <i
                   onClick={() => likePostDetail(post)}
-                  class="fas liked fa-heart"
+                  className="fas liked fa-heart"
                 ></i>
               </div>
             ) : (
@@ -101,7 +102,7 @@ const PostDetails = () => {
               className="delete-post"
               hidden={user.id === post.user_id ? false : true}
             >
-              <i onClick={handleDelete} class="far fa-trash-alt"></i>
+              <i onClick={handleDelete} className="far fa-trash-alt"></i>
             </div>
           </div>
 
