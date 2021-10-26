@@ -7,7 +7,7 @@ import "./Navbar.css";
 const NavBar = ({ userdata, setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
 
-  console.log(user?.profile_pic)
+  // console.log(user?.profile_pic)
   let navbar_pfp;
 
   if (user?.profile_pic) {

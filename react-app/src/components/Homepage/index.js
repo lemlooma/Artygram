@@ -41,7 +41,7 @@ const HomePage = () => {
     array.push(Math.floor(Math.random() * max) + min)
     array.push(Math.floor(Math.random() * max) + min)
     array.push(Math.floor(Math.random() * max) + min)
-    console.log(array)
+    // console.log(array)
   }
   randomUserPosts(1, allUsers.users?.length)
 
