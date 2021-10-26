@@ -37,17 +37,24 @@ margin-right: 10px;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 150px;
 }
 
 .navbarProPic{
    width: 26px;
    border-radius: 50% ;
   height: 28px;
-  margin-top: 10px;
+  margin-top: 7px;
 }
 .search{
   width:300px;
   height: 25px;
   border-radius: 8px;
   text-align: center;
+}
+
+.logout__container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -7,7 +7,7 @@ import "./login-signup.css";
 import Particles from "react-particles-js";
 
 
-const SignUpForm = ({setAuthenticated}) => {
+const SignUpForm = ({ setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
@@ -23,7 +23,7 @@ const SignUpForm = ({setAuthenticated}) => {
       if (data) {
         setErrors(data)
       }
-    }else{
+    } else {
       setErrors(["Passwords do no match!"])
     }
   };
@@ -74,7 +74,7 @@ const SignUpForm = ({setAuthenticated}) => {
           <div className="input__container">
             <input
               className="input"
-              type="text"
+              type="email"
               name="email"
               placeholder="Email"
               onChange={updateEmail}
@@ -103,6 +103,13 @@ const SignUpForm = ({setAuthenticated}) => {
               required={true}
             ></input>
           </div>
+          {/* <div>
+            <input
+              className="input"
+              type="text"
+            ></input>
+          </div> */}
+          {/* Kyle's working on this optional profile picture input */}
           <button className="log-in-button" type="submit">
             Sign Up
           </button>

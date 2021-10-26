@@ -7,6 +7,14 @@ import "./Navbar.css";
 const NavBar = ({ userdata, setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
 
+  let navbar_pfp;
+
+  if (user?.profile_pic) {
+    navbar_pfp = user?.profile_pic
+  }
+  else {
+    navbar_pfp = "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png"
+  }
 
   const artygram = "https://i.imgur.com/t3Mtt7E.png";
   const addpic = "https://i.imgur.com/3yiJpcr.png";
@@ -47,8 +55,10 @@ const NavBar = ({ userdata, setAuthenticated }) => {
             </div>
             <div className='logout__container'>
               <NavLink to={`/user/${user.id}`}>
-                <img className="navbarProPic" src={user.profile_pic} alt={user.id} />
+                <img className="navbarProPic" src={navbar_pfp} alt={user.id} />
               </NavLink>
+            </div>
+            <div>
               <LogoutButton setAuthenticated={setAuthenticated} />
             </div>
           </div>

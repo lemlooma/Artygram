@@ -3,12 +3,14 @@ import { useSelector, useDispatch } from "react-redux"
 import { Link } from "react-router-dom"
 import { getAllPosts, likeOnePost } from "../../store/post"
 import { getAllFollowing } from "../../store/session"
+import { getAllUsers } from "../../store/user"
 import './homepage.css'
 
 
 const HomePage = () => {
   const user = useSelector(state => state.session.user)
   const posts = useSelector(state => Object.values(state.posts))
+  const allUsers = useSelector(state => state.users)
   const dispatch = useDispatch();
 
   const [getPost, setPost] = useState(false);
@@ -22,6 +24,7 @@ const HomePage = () => {
 
   useEffect(() => {
     dispatch(getAllPosts())
+    dispatch(getAllUsers())
     dispatch(getAllFollowing(user.id))
   }, [dispatch])
 
@@ -30,15 +33,27 @@ const HomePage = () => {
       dispatch(likeOnePost(getPost))
       // dispatch(getAllPosts())
     }
-  }, [getPost,dispatch])
+  }, [getPost, dispatch])
 
 
+  let array = []
+  function randomUserPosts(min, max) {
+    array.push(Math.floor(Math.random() * max) + min)
+    array.push(Math.floor(Math.random() * max) + min)
+    array.push(Math.floor(Math.random() * max) + min)
+    console.log(array)
+  }
+  randomUserPosts(1, allUsers.users?.length)
 
+  const filtered2 = posts.filter((post) => array.includes(post.user_id))
+  const sortedPosts2 = filtered2.reverse()
 
+  let conditionalPosts
+  user.follows?.length !== 0 ? conditionalPosts = sortedPosts : conditionalPosts = sortedPosts2
 
   return (
     <div className="photo-feed__container">
-      {sortedPosts?.map((post) => (
+      {conditionalPosts?.map((post) => (
         <div key={post.id} className="single-post__container">
           <div className="icon-username__container">
             <Link to={`/user/${post.user_id}`}>

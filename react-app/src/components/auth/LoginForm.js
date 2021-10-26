@@ -18,10 +18,11 @@ const LoginForm = () => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      setErrors(data);
+      console.log(data)
+      setErrors(['Incorrect email or password']);
     }
   };
-  
+
   const updateEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -42,17 +43,17 @@ const LoginForm = () => {
         <form className="login-form" onSubmit={onLogin}>
           <div>
             <div className="errors">
-            {errors.map((error) => (
-              <div >{error}</div>
-            ))}
+              {errors.map((error) => (
+                <div>{error}</div>
+              ))}
             </div>
           </div>
-        
+
           <div className="input__container">
             <input
               className="input"
               name="email"
-              type="text"
+              type="email"
               placeholder="Email"
               value={email}
               onChange={updateEmail}
