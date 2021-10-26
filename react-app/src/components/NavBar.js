@@ -7,6 +7,7 @@ import "./Navbar.css";
 const NavBar = ({ userdata, setAuthenticated }) => {
   const user = useSelector(state => state.session.user)
 
+  console.log(user?.profile_pic)
   let navbar_pfp;
 
   if (user?.profile_pic) {
@@ -55,7 +56,8 @@ const NavBar = ({ userdata, setAuthenticated }) => {
             </div>
             <div className='logout__container'>
               <NavLink to={`/user/${user.id}`}>
-                <img className="navbarProPic" src={navbar_pfp} alt={user.id} />
+                {user?.profile_pic === null || user?.profile_pic.includes("jpeg") || user?.profile_pic.includes("jpg") || user?.profile_pic.includes("png") || user?.profile_pic.includes("image") ? <img className="navbarProPic" src={navbar_pfp} /> : <img className="navbarProPic" src="https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png" />}
+                {/* <img className="navbarProPic" src={navbar_pfp} alt={user.id} /> */}
               </NavLink>
             </div>
             <div>
