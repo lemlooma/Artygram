@@ -22,6 +22,15 @@ function User() {
 
   const filteredPost = posts.filter((post) => post.user_id === +userId);
 
+  let navbar_pfp;
+
+  if (user?.profile_pic) {
+    navbar_pfp = user?.profile_pic
+  }
+  else {
+    navbar_pfp = "https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png"
+  }
+
   const handleFollow = async () => {
     const response = await fetch(`/api/users/${userId}/follow`);
     const obj = await response.json();
@@ -59,7 +68,8 @@ function User() {
 
       <div className="userDetails">
         <div>
-          <img className="userProfilePic" src={user.profile_pic} alt={user.id} />
+          {user?.profile_pic === null || user?.profile_pic?.includes("jpeg") || user?.profile_pic?.includes("jpg") || user?.profile_pic?.includes("png") || user?.profile_pic?.includes("image") ? <img className="userProfilePic" src={navbar_pfp} /> : <img className="navbarProPic" src="https://www.tenforums.com/geek/gars/images/2/types/thumb_15951118880user.png" />}
+          {/* <img className="userProfilePic" src={user.profile_pic} alt={user.id} /> */}
         </div>
 
         <div>

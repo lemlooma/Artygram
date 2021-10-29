@@ -21,11 +21,19 @@ const HomePage = () => {
 
   const sortedPosts = filtered.reverse()
 
+  let array = []
+  function randomUserPosts(min, max) {
+    array.push(Math.floor(Math.random() * max) + min)
+    array.push(Math.floor(Math.random() * max) + min)
+    array.push(Math.floor(Math.random() * max) + min)
+    // console.log(array)
+  }
 
   useEffect(() => {
     dispatch(getAllPosts())
     dispatch(getAllUsers())
     dispatch(getAllFollowing(user.id))
+
   }, [dispatch])
 
   useEffect(() => {
@@ -35,21 +43,19 @@ const HomePage = () => {
     }
   }, [getPost, dispatch])
 
-
-  let array = []
-  function randomUserPosts(min, max) {
-    array.push(Math.floor(Math.random() * max) + min)
-    array.push(Math.floor(Math.random() * max) + min)
-    array.push(Math.floor(Math.random() * max) + min)
-    // console.log(array)
-  }
   randomUserPosts(1, allUsers.users?.length)
+
 
   const filtered2 = posts.filter((post) => array.includes(post.user_id))
   const sortedPosts2 = filtered2.reverse()
 
   let conditionalPosts
   user.follows?.length !== 0 ? conditionalPosts = sortedPosts : conditionalPosts = sortedPosts2
+
+
+  if (array.length === 0) {
+    return null
+  }
 
   return (
     <div className="photo-feed__container">
