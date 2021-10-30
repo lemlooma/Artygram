@@ -60,6 +60,7 @@
     box-sizing: border-box;
     border-radius: 10px;
     margin: 10px;
+    object-fit: cover;
   }
   .userPostPhoto:hover{
     opacity: 0.8;

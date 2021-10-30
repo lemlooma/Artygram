@@ -22,7 +22,7 @@ const PostForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const post = await dispatch(createPost(caption, pic_url));
-    console.log(post)
+    // console.log(post)
     if(post.id){
       history.push("/");
     }
