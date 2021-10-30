@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify
-from flask_login import login_required,current_user
+from flask_login import login_required, current_user
 from app.models import User
 from ..models.db import db
 
@@ -59,3 +59,4 @@ def likeOnPost(id):
     db.session.commit()
     # print('this is the post!!!!!!!!!!!', post.postLikes)
     return {'loggedUser': loggedUser.to_dict(), 'otherUser': otherUser.to_dict()}
+

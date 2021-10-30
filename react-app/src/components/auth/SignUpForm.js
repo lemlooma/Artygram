@@ -7,23 +7,24 @@ import "./login-signup.css";
 import Particles from "react-particles-js";
 
 
-const SignUpForm = ({setAuthenticated}) => {
+const SignUpForm = ({ setAuthenticated }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [profile_pic, setProfilePic] = useState('')
   const user = useSelector(state => state.session.user);
   const dispatch = useDispatch();
 
   const onSignUp = async (e) => {
     e.preventDefault();
     if (password === repeatPassword) {
-      const data = await dispatch(signUp(username, email, password));
+      const data = await dispatch(signUp(username, email, password, profile_pic));
       if (data) {
         setErrors(data)
       }
-    }else{
+    } else {
       setErrors(["Passwords do no match!"])
     }
   };
@@ -42,6 +43,10 @@ const SignUpForm = ({setAuthenticated}) => {
 
   const updateRepeatPassword = (e) => {
     setRepeatPassword(e.target.value);
+  };
+
+  const updateProfilePic = (e) => {
+    setProfilePic(e.target.value);
   };
 
   if (user) {
@@ -74,7 +79,7 @@ const SignUpForm = ({setAuthenticated}) => {
           <div className="input__container">
             <input
               className="input"
-              type="text"
+              type="email"
               name="email"
               placeholder="Email"
               onChange={updateEmail}
@@ -103,6 +108,17 @@ const SignUpForm = ({setAuthenticated}) => {
               required={true}
             ></input>
           </div>
+          <div className="input__container">
+            <input
+              className="input"
+              type="text"
+              name="profile_pic"
+              placeholder="Picture URL (optional)"
+              onChange={updateProfilePic}
+              value={profile_pic}
+            ></input>
+          </div>
+          {/* Kyle's working on this optional profile picture input */}
           <button className="log-in-button" type="submit">
             Sign Up
           </button>
